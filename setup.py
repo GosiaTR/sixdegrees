@@ -22,21 +22,21 @@ class get_pybind_include(object):
 
 ext_modules = [
     Extension(
-        'cMHRN',
+        '_sixdegrees',
         [ 
-            'cMHRN/Utilities.cpp', 
-            'cMHRN/mhrn.cpp', 
-            'cMHRN/kleinberg.cpp', 
-            'cMHRN/original_small_world.cpp', 
-            'cMHRN/modified_small_world.cpp', 
-            'cMHRN/random_geometric_small_world.cpp', 
-            'cMHRN/random_geometric_kleinberg.cpp', 
-            'cMHRN/cMHRN.cpp', 
+            '_sixdegrees/Utilities.cpp', 
+            '_sixdegrees/mhrn.cpp', 
+            '_sixdegrees/kleinberg.cpp', 
+            '_sixdegrees/original_small_world.cpp', 
+            '_sixdegrees/modified_small_world.cpp', 
+            '_sixdegrees/random_geometric_small_world.cpp', 
+            '_sixdegrees/random_geometric_kleinberg.cpp', 
+            '_sixdegrees/_sixdegrees.cpp', 
         ],
         include_dirs=[
             get_pybind_include(),
             get_pybind_include(user=True),
-            "./cMHRN/"
+            "./_sixdegrees/"
         ],
         language='c++',
     ),
@@ -90,12 +90,12 @@ class BuildExt(build_ext):
         build_ext.build_extensions(self)
 
 setup(
-    name='cMHRN',
+    name='_sixdegrees',
     version=__version__,
     author='Benjamin F. Maier',
     author_email='bfmaier@physik.hu-berlin.de',
-    url='https://github.com/benmaier/cMHRN',
-    license='BSD',
+    url='https://github.com/benmaier/sixdegrees',
+    license='MIT',
     description='Creates modular hierarichical random networks, Kleinberg networks and small world networks in a fast manner.',
     long_description='',
     ext_modules=ext_modules,

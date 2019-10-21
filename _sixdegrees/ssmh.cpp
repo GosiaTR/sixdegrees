@@ -24,7 +24,7 @@
  */
 
 #include "Utilities.h"
-#include "mhrn.h"
+#include "ssmh.h"
 
 #include <iostream>
 #include <algorithm>
@@ -71,7 +71,7 @@ double find_xi_min(const size_t &B, const size_t &L, const double &k)
     return x1;
 }
 
-tuple < size_t, vector <size_t>, vector<size_t> > fast_mhrn_coord_lists(
+tuple < size_t, vector <size_t>, vector<size_t> > fast_ssmh_coord_lists(
         size_t B,
         size_t L,
         double k,
@@ -82,7 +82,7 @@ tuple < size_t, vector <size_t>, vector<size_t> > fast_mhrn_coord_lists(
         size_t seed
         )
 {
-    vector < set < size_t > * > G = fast_mhrn_neighbor_set(B,L,k,xi,
+    vector < set < size_t > * > G = fast_ssmh_neighbor_set(B,L,k,xi,
                                                            use_giant_component,
                                                            allow_probability_redistribution,
                                                            seed);
@@ -130,7 +130,7 @@ tuple < size_t, vector <size_t>, vector<size_t> > fast_mhrn_coord_lists(
     return make_tuple(new_N,rows,cols);
 }
 
-pair < size_t, vector < pair < size_t, size_t > > > fast_mhrn_edge_list(
+pair < size_t, vector < pair < size_t, size_t > > > fast_ssmh_edge_list(
         size_t B,
         size_t L,
         double k,
@@ -143,7 +143,7 @@ pair < size_t, vector < pair < size_t, size_t > > > fast_mhrn_edge_list(
 {
     size_t N = pow(B,L);
     size_t new_N = N;
-    vector < set < size_t > * > G = fast_mhrn_neighbor_set(B,L,k,xi,
+    vector < set < size_t > * > G = fast_ssmh_neighbor_set(B,L,k,xi,
                                                            use_giant_component,
                                                            allow_probability_redistribution,
                                                            seed);
@@ -194,7 +194,7 @@ pair < size_t, vector < pair < size_t, size_t > > > fast_mhrn_edge_list(
     return make_pair(new_N,edge_list);
 }
 
-vector < set < size_t > * > fast_mhrn_neighbor_set(
+vector < set < size_t > * > fast_ssmh_neighbor_set(
         size_t B,
         size_t L,
         double k,
@@ -300,7 +300,7 @@ vector < set < size_t > * > fast_mhrn_neighbor_set(
 
         // a safety mechanism
         if (new_p[l] > 1.0)
-            throw domain_error("There's something wrong with the redistribution algorithm. Please open an issue at https://github.com/benmaier/cMHRN/issues");
+            throw domain_error("There's something wrong with the redistribution algorithm. Please open an issue at https://github.com/benmaier/cssmh/issues");
 
         for (size_t j=l+1; j<L; j++)
             new_p[j] = p[j];

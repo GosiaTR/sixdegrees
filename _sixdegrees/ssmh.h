@@ -1,5 +1,5 @@
-#ifndef __MHRN_H__
-#define __MHRN_H__
+#ifndef __ssmh_H__
+#define __ssmh_H__
 
 #include "Utilities.h"
 #include <random>
@@ -13,7 +13,7 @@ double fP(const size_t &B, const size_t &L, const double &k, double xi);
 
 double find_xi_min(const size_t &B, const size_t &L, const double &k);
 
-tuple < size_t, vector <size_t>, vector<size_t> > fast_mhrn_coord_lists(
+tuple < size_t, vector <size_t>, vector<size_t> > fast_ssmh_coord_lists(
         size_t B,
         size_t L,
         double k,
@@ -24,7 +24,7 @@ tuple < size_t, vector <size_t>, vector<size_t> > fast_mhrn_coord_lists(
         size_t seed = 0
         );
 
-pair < size_t, vector < pair < size_t, size_t > > > fast_mhrn_edge_list(
+pair < size_t, vector < pair < size_t, size_t > > > fast_ssmh_edge_list(
         size_t B,
         size_t L,
         double k,
@@ -35,7 +35,7 @@ pair < size_t, vector < pair < size_t, size_t > > > fast_mhrn_edge_list(
         size_t seed = 0
         );
 
-vector < set < size_t > * > fast_mhrn_neighbor_set(
+vector < set < size_t > * > fast_ssmh_neighbor_set(
         size_t B,
         size_t L,
         double k,

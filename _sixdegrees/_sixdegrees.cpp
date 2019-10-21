@@ -37,7 +37,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include "Utilities.h"
-#include "mhrn.h"
+#include "ssmh.h"
 #include "kleinberg.h"
 #include "modified_small_world.h"
 #include "original_small_world.h"
@@ -49,10 +49,10 @@
 using namespace std;
 namespace py = pybind11;
 
-PYBIND11_MODULE(cMHRN, m) {
-    m.doc() = "Module to generate MHRN, Kleinberg networks and small world networks in a fast manner.";
+PYBIND11_MODULE(_sixdegrees, m) {
+    m.doc() = "Generate generalized small-world networks, including self-similar modular hierarchical and modified Kleinberg networks.";
     
-    m.def("fast_mhrn", &fast_mhrn_edge_list, "Returns an MHRN as edge list.",
+    m.def("fast_ssmh", &fast_ssmh_edge_list, "Returns a self-similar modular hierarchical network as an edge list.",
             py::arg("B"),
             py::arg("L"),
             py::arg("k"),
@@ -63,7 +63,7 @@ PYBIND11_MODULE(cMHRN, m) {
             py::arg("seed") = 0
             );
 
-    m.def("fast_mhrn_coord_lists", &fast_mhrn_coord_lists, "Returns an MHRN as lists of adjacency matrix coordinates.",
+    m.def("fast_ssmh_coord_lists", &fast_ssmh_coord_lists, "Returns a self-similar modular hierarchical network  as lists of adjacency matrix coordinates.",
             py::arg("B"),
             py::arg("L"),
             py::arg("k"),
@@ -74,7 +74,7 @@ PYBIND11_MODULE(cMHRN, m) {
             py::arg("seed") = 0
             );
 
-    m.def("kleinberg_network", &kleinberg_edge_list, "Returns a 1d Kleinberg network (with periodic boundary conditions) as edge list. Connection probability of two nodes u and v is ~ d(u,v)^(mu-1) where d(u,v) is the pair's lattice distance. If you want to map from an MHRN, bear in mind that N=B^L and mu=log(xi)/log(B).",
+    m.def("kleinberg_network", &kleinberg_edge_list, "Returns a 1d Kleinberg network (with periodic boundary conditions) as edge list. Connection probability of two nodes u and v is ~ d(u,v)^(mu-1) where d(u,v) is the pair's lattice distance. If you want to map from an ssmh, bear in mind that N=B^L and mu=log(xi)/log(B).",
             py::arg("N"),
             py::arg("k"),
             py::arg("mu"),
@@ -83,7 +83,7 @@ PYBIND11_MODULE(cMHRN, m) {
             py::arg("seed") = 0
             );
 
-    m.def("kleinberg_network_coord_lists", &kleinberg_coord_lists, "Returns a 1d Kleinberg network (with periodic boundary conditions) as lists of adjacency matrix coordinates. Connection probability of two nodes u and v is ~ d(u,v)^(mu-1) where d(u,v) is the pair's lattice distance. If you want to map from an MHRN, bear in mind that N=B^L and mu=log(xi)/log(B).",
+    m.def("kleinberg_network_coord_lists", &kleinberg_coord_lists, "Returns a 1d Kleinberg network (with periodic boundary conditions) as lists of adjacency matrix coordinates. Connection probability of two nodes u and v is ~ d(u,v)^(mu-1) where d(u,v) is the pair's lattice distance. If you want to map from an ssmh, bear in mind that N=B^L and mu=log(xi)/log(B).",
             py::arg("N"),
             py::arg("k"),
             py::arg("mu"),
@@ -92,7 +92,7 @@ PYBIND11_MODULE(cMHRN, m) {
             py::arg("seed") = 0
             );
 
-    m.def("random_geometric_kleinberg_network", &random_geometric_kleinberg_edge_list, R"pydoc(Returns a 1d Kleinberg network (with periodic boundary conditions) as edge list where node positions are uniformly distributed in the real-valued interval [0,N]. Connection probability of two nodes u and v is ~ d(u,v)^(mu-1) where d(u,v) is the pair's distance in periodic boundary conditions. If you want to map from an MHRN, bear in mind that N=B^L and mu=log(xi)/log(B). DO NOT USE WITH `use_theory_algorithm = True`.)pydoc",
+    m.def("random_geometric_kleinberg_network", &random_geometric_kleinberg_edge_list, R"pydoc(Returns a 1d Kleinberg network (with periodic boundary conditions) as edge list where node positions are uniformly distributed in the real-valued interval [0,N]. Connection probability of two nodes u and v is ~ d(u,v)^(mu-1) where d(u,v) is the pair's distance in periodic boundary conditions. If you want to map from an ssmh, bear in mind that N=B^L and mu=log(xi)/log(B). DO NOT USE WITH `use_theory_algorithm = True`.)pydoc",
             py::arg("N"),
             py::arg("k"),
             py::arg("mu"),
@@ -103,7 +103,7 @@ PYBIND11_MODULE(cMHRN, m) {
             py::arg("epsilon") = 0.0
             );
 
-    m.def("random_geometric_kleinberg_network_coord_lists", &random_geometric_kleinberg_coord_lists, R"pydoc(Returns a 1d Kleinberg network (with periodic boundary conditions) as lists of adjacency matrix coordinates, where node positions are uniformly distributed in the real-valued interval [0,N]. Connection probability of two nodes u and v is ~ d(u,v)^(mu-1) where d(u,v) is the pair's distance in periodic boundary conditions. If you want to map from an MHRN, bear in mind that N=B^L and mu=log(xi)/log(B). DO NOT USE WITH `use_theory_algorithm = True`.)pydoc",
+    m.def("random_geometric_kleinberg_network_coord_lists", &random_geometric_kleinberg_coord_lists, R"pydoc(Returns a 1d Kleinberg network (with periodic boundary conditions) as lists of adjacency matrix coordinates, where node positions are uniformly distributed in the real-valued interval [0,N]. Connection probability of two nodes u and v is ~ d(u,v)^(mu-1) where d(u,v) is the pair's distance in periodic boundary conditions. If you want to map from an ssmh, bear in mind that N=B^L and mu=log(xi)/log(B). DO NOT USE WITH `use_theory_algorithm = True`.)pydoc",
             py::arg("N"),
             py::arg("k"),
             py::arg("mu"),
