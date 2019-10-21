@@ -1,5 +1,5 @@
 import mhrn
-import cMHRN
+import sixdegrees
 import networkx as nx
 import numpy as np
 import time
@@ -20,13 +20,13 @@ seed = 371
 bar = progressbar.ProgressBar()
 for meas in bar(range(N_meas)):
     tic = time.time()
-    N, G2 = cMHRN.kleinberg_network(N,k,mu)
+    N, G2 = sixdegrees.kleinberg_network(N,k,mu)
     toc = time.time()
     t_c += (toc-tic) / N_meas
     k_c += len(G2)*2./N / float(N_meas)
 
     tic = time.time()
-    N, G = cMHRN.random_geometric_kleinberg_network(N,k,mu,epsilon=1e-3)
+    N, G = sixdegrees.random_geometric_kleinberg_network(N,k,mu,epsilon=1e-3)
     toc = time.time()
     t_nx += (toc-tic) / N_meas
     k_nx += len(G)*2./N / float(N_meas)

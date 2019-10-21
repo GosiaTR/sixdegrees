@@ -1,5 +1,5 @@
 import mhrn
-import cMHRN
+import sixdegrees
 import networkx as nx
 import numpy as np
 import time
@@ -31,7 +31,7 @@ for meas in bar(range(N_meas)):
     k_nx += G1.number_of_edges()*2./B**L / N_meas
 
     tic = time.time()
-    G2 = cMHRN.fast_mhrn(B,L,k,xi,seed=seed)
+    G2 = sixdegrees.fast_ssmh(B,L,k,xi,seed=seed)
     toc = time.time()
     t_c += (toc-tic) / N_meas
     k_c += len(G2)*2./B**L / N_meas
@@ -61,7 +61,7 @@ for meas in bar(range(N_meas)):
     k_nx += current_k / N_new / N_meas
 
     tic = time.time()
-    N,rows,cols = cMHRN.fast_mhrn_coord_lists(B,L,k,xi,seed=seed,use_giant_component=True)
+    N,rows,cols = sixdegrees.fast_ssmh_coord_lists(B,L,k,xi,seed=seed,use_giant_component=True)
     rows = np.array(rows)
     cols = np.array(cols)
     data = np.ones_like(rows)

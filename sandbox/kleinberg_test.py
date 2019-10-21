@@ -1,5 +1,5 @@
 import mhrn
-import cMHRN
+import sixdegrees
 import networkx as nx
 import numpy as np
 import time
@@ -20,9 +20,9 @@ t_nx, t_c = 0.0, 0.0
 seed = 371
 
 bar = progressbar.ProgressBar()
-for meas in bar(xrange(N_meas)):
+for meas in bar(range(N_meas)):
     tic = time.time()
-    N, G2 = cMHRN.kleinberg_network(B**L,k,np.log(xi)/np.log(B))
+    N, G2 = sixdegrees.kleinberg_network(B**L,k,np.log(xi)/np.log(B))
     toc = time.time()
     t_c += (toc-tic) / N_meas
     k_c += len(G2)*2./B**L / float(N_meas)
@@ -33,13 +33,13 @@ for meas in bar(xrange(N_meas)):
     t_nx += (toc-tic) / N_meas
     k_nx += G.number_of_edges()*2./B**L / float(N_meas)
 
-print "python: k = %4.2f, t = %fs" % (k_nx,t_nx)
-print "c++   : k = %4.2f, t = %fs" % (k_c,t_c)
-print 
+print("python: k = %4.2f, t = %fs" % (k_nx,t_nx))
+print("c++   : k = %4.2f, t = %fs" % (k_c,t_c))
+print() 
 
 
 if drawing:
-    N, G2 = cMHRN.kleinberg_network(B**L,k,np.log(xi)/np.log(B),seed=seed+meas)
+    N, G2 = sixdegrees.kleinberg_network(B**L,k,np.log(xi)/np.log(B),seed=seed+meas)
     G = nx.Graph()
     G.add_edges_from(G2)
 

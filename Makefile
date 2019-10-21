@@ -16,11 +16,11 @@ pyclean:
 	-rm -rf ./build/
 
 python:
-	pip install -e ../cMHRN --no-binary :all:
+	pip install -e ../sixdegrees --no-binary :all:
 
 grootinstall:
 	. /opt/rh/devtoolset-2/enable
-	/opt/python36/bin/pip3.6 install --user ../cMHRN
+	/opt/python36/bin/pip3.7 install --user ../sixdegrees
 
 groot:
 	git fetch

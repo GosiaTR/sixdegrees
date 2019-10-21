@@ -1,5 +1,5 @@
 import mhrn
-import cMHRN
+import sixdegrees
 import networkx as nx
 import numpy as np
 import time
@@ -22,10 +22,10 @@ t_nx, t_c = 0.0, 0.0
 
 seed = 1
 
-print "measuring only creation"
+print("measuring only creation")
 
 bar = progressbar.ProgressBar()
-for meas in bar(xrange(N_meas)):
+for meas in bar(range(N_meas)):
     seed += 1
     tic = time.time()
     G1 = mhrn.continuous_hierarchical_graph(N,k,mu,redistribute_probability=True)
@@ -34,23 +34,23 @@ for meas in bar(xrange(N_meas)):
     k_nx += G1.number_of_edges()*2./B**L / N_meas
 
     tic = time.time()
-    N, G2 = cMHRN.kleinberg_network(N,k,mu)
+    N, G2 = sixdegrees.kleinberg_network(N,k,mu)
     toc = time.time()
     t_c += (toc-tic) / N_meas
     k_c += len(G2)*2./B**L / N_meas
 
-print "python: k = %4.2f, t = %fs" % (k_nx,t_nx)
-print "c++   : k = %4.2f, t = %fs" % (k_c,t_c)
-print 
+print("python: k = %4.2f, t = %fs" % (k_nx,t_nx))
+print("c++   : k = %4.2f, t = %fs" % (k_c,t_c))
+print() 
 
-print "measuring with extraction of giant component"
+print("measuring with extraction of giant component")
 
 k_nx, k_c = 0.0, 0.0
 t_nx, t_c = 0.0, 0.0
 
 
 bar = progressbar.ProgressBar()
-for meas in bar(xrange(N_meas)):
+for meas in bar(range(N_meas)):
     seed += 1
     tic = time.time()
     G1 = mhrn.continuous_hierarchical_graph(N,k,mu,redistribute_probability=True)
@@ -64,7 +64,7 @@ for meas in bar(xrange(N_meas)):
     k_nx += current_k / N_new / N_meas
 
     tic = time.time()
-    N,rows,cols = cMHRN.kleinberg_network_coord_lists(N,k,mu,use_giant_component=True)
+    N,rows,cols = sixdegrees.kleinberg_network_coord_lists(N,k,mu,use_giant_component=True)
     rows = np.array(rows)
     cols = np.array(cols)
     data = np.ones_like(rows)
@@ -74,5 +74,5 @@ for meas in bar(xrange(N_meas)):
     t_c += (toc-tic) / N_meas
     k_c += current_k / N_new / N_meas
 
-print "python: k = %4.2f, t = %fs" % (k_nx,t_nx)
-print "c++   : k = %4.2f, t = %fs" % (k_c,t_c)
+print("python: k = %4.2f, t = %fs" % (k_nx,t_nx))
+print("c++   : k = %4.2f, t = %fs" % (k_c,t_c))

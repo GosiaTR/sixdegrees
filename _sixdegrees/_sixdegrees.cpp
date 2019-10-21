@@ -179,7 +179,7 @@ PYBIND11_MODULE(_sixdegrees, m) {
             py::arg("seed") = 0
            );
 
-    m.def("get_components", &get_components_from_edgelist, "Get a list of sets. Each list entry is a set of nodes which make up one component of the graph.",
+    m.def("get_components", &get_components_from_edgelist, "Get a list of sets. Each list entry is a set of nodes which makes up one component of the graph.",
             py::arg("N"),
             py::arg("edge_list")
           );

@@ -5,7 +5,8 @@ from setuptools.command.build_ext import build_ext
 import setuptools
 import os, sys
 
-__version__ = '0.2'
+# get __version__, __author__, and __email__
+exec(open("./sixdegrees/metadata.py").read())
 
 class get_pybind_include(object):
     """Helper class to determine the pybind11 include path
@@ -25,7 +26,7 @@ ext_modules = [
         '_sixdegrees',
         [ 
             '_sixdegrees/Utilities.cpp', 
-            '_sixdegrees/mhrn.cpp', 
+            '_sixdegrees/ssmh.cpp', 
             '_sixdegrees/kleinberg.cpp', 
             '_sixdegrees/original_small_world.cpp', 
             '_sixdegrees/modified_small_world.cpp', 
@@ -90,16 +91,22 @@ class BuildExt(build_ext):
         build_ext.build_extensions(self)
 
 setup(
-    name='_sixdegrees',
+    name='sixdegrees',
     version=__version__,
-    author='Benjamin F. Maier',
-    author_email='bfmaier@physik.hu-berlin.de',
+    author=__author__,
+    author_email=__email__,
     url='https://github.com/benmaier/sixdegrees',
-    license='MIT',
+    license=__license__,
     description='Creates modular hierarichical random networks, Kleinberg networks and small world networks in a fast manner.',
     long_description='',
+    packages = setuptools.find_packages(),
     ext_modules=ext_modules,
-    install_requires=['pybind11'],
+    setup_requires=['pybind11>=2.2.4'],
+    install_requires=[
+                 'pybind11>=2.2.4',
+                 'numpy>=1.15.4',
+                 'scipy>=1.2.0',
+                 ],
     cmdclass={'build_ext': BuildExt},
     zip_safe=False,
 )

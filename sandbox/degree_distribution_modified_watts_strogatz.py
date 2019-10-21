@@ -1,4 +1,4 @@
-import cMHRN 
+import sixdegrees 
 import numpy as np
 import scipy.sparse as sprs
 from scipy.special import binom 
@@ -39,7 +39,7 @@ for beta in betas:
 
     for meas in range(N_meas):
 
-        _, row, col = cMHRN.modified_small_world_network_coord_lists(
+        _, row, col = sixdegrees.modified_small_world_network_coord_lists(
                 N,
                 k,
                 beta,
