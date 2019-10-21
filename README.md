@@ -1,38 +1,16 @@
-# cMHRN
+# sixdegrees
 
-For fast creation of modular hierarchical random networks (MHRN)
+Fast sampling of generalized small-world networks, including self-similar modular hierarchical and modified Kleinberg networks.
 
 ## Install
 
-For all systems, first clone this repository.
+Make sure you have a compiler installed that can compile the C++11 dialect.
 
-### Matlab (Mac OSX)
+First, install the header library `pybind11`.
 
-You need to have the current XCode version installed (free in AppStore). Open Matlab and change into the directory of the repository. At first, there's two files you need to change.
+    $ pip install pybind11
 
-```matlab
->>> cd /path/to/repository
->>> edit ([matlabroot '/bin/maci64/mexopts/clang++_maci64.xml'])
->>> edit ([matlabroot '/bin/maci64/mexopts/clang_maci64.xml'])
-```
+Then, clone and compile the package
 
-In both files, copy lines matching occurences of `MacOSX10.x.sdk` and change `MacOSX10.x.sdk` to `MacOSX10.11.sdk`(or whichever current version of XCode you're using).
-
-Now, run
-
-
-```matlab
->>> setup
->>> cd sandbox
->>> matlab_test
-```
-
-### Python
-
-    $ sudo pip install ./cMHRN
-
-## Example
-
-### Python
-
-    $ python sandbox/mhrn_test.py
+    $ git clone https://github.com/benmaier/sixdegrees.git
+    $ pip install ./sixdegrees
