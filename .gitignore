@@ -9,6 +9,9 @@ a.out
 *.mexmaci64
 *.m~
 *.swp
+*.pyc
+
+*__pycache__*
 
 /*.egg-info/
 /build/
