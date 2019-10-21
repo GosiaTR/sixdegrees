@@ -198,6 +198,10 @@ vector < set < size_t > * > random_geometric_small_world_neighbor_set(
         r.push_back( random_number(generator)*double(N) );
     }
 
+    // sort position so one knows that the node position 0 is the
+    // first in [0,N] and so forth
+    sort(r.begin(), r.end());
+
     // loop over all pairs and draw according to the right probability
     // (this is a lazy slow algorithm running in O(N^2) time
     size_t SR_edges = 0;

@@ -6,7 +6,7 @@ import time
 import scipy.sparse as sprs
 import progressbar
 
-N = 10000
+N = 1000
 k = 7
 mu = -1
 
