@@ -1,0 +1,263 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>_sixdegrees._random_geometric_kleinberg_network &mdash; sixdegrees 0.3 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="_sixdegrees._random_geometric_kleinberg_network_coord_lists" href="_sixdegrees._random_geometric_kleinberg_network_coord_lists.html" />
+    <link rel="prev" title="_sixdegrees._random_geometric_small_world_network_coord_lists" href="_sixdegrees._random_geometric_small_world_network_coord_lists.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> sixdegrees
+          
+
+          
+            
+            <img src="../../_static/new_logo_very_small_2width.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About this project</a></li>
+</ul>
+<p class="caption"><span class="caption-text">FOO</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../visualizations/drawing.html">Drawing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../visualizations/interactive.html">Interactive</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp_core.html">Relevant C++-core functions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../cpp_core.html#lattice-small-world-generators">Lattice small-world generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp_core.html#modular-hierarchical-generators">Modular hierarchical generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp_core.html#lattice-kleinberg-generators">Lattice Kleinberg generators</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../cpp_core.html#random-geometric-generators">Random geometric generators</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="_sixdegrees._random_geometric_small_world_network.html">_sixdegrees._random_geometric_small_world_network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_sixdegrees._random_geometric_small_world_network_coord_lists.html">_sixdegrees._random_geometric_small_world_network_coord_lists</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">_sixdegrees._random_geometric_kleinberg_network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_sixdegrees._random_geometric_kleinberg_network_coord_lists.html">_sixdegrees._random_geometric_kleinberg_network_coord_lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_sixdegrees._twoD_random_geometric_kleinberg_network.html">_sixdegrees._twoD_random_geometric_kleinberg_network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_sixdegrees._twoD_random_geometric_kleinberg_network_coord_lists.html">_sixdegrees._twoD_random_geometric_kleinberg_network_coord_lists</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp_core.html#helper-functions">Helper functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sixdegrees_small_world_api.html">Small-World API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sixdegrees_modular_hierarchical_api.html">Modular-Hierarchical API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sixdegrees_random_geometric_api.html">Random-Geometric API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sixdegrees_kleinberg_helpers.html">Kleinberg Helper Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sixdegrees_utils.html">Utilities</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sixdegrees</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp_core.html">Relevant C++-core functions</a> &raquo;</li>
+        
+      <li>_sixdegrees._random_geometric_kleinberg_network</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/reference/_generate/_sixdegrees._random_geometric_kleinberg_network.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sixdegrees-random-geometric-kleinberg-network">
+<h1>_sixdegrees._random_geometric_kleinberg_network<a class="headerlink" href="#sixdegrees-random-geometric-kleinberg-network" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="_sixdegrees._random_geometric_kleinberg_network">
+<code class="descclassname">_sixdegrees.</code><code class="descname">_random_geometric_kleinberg_network</code><span class="sig-paren">(</span><em>N: int, k: float, mu: float, X: List[float], use_largest_component: bool=False, delete_non_largest_component_nodes: bool=True, use_theory_algorithm: bool=False, seed: int=0, epsilon: float=0.0</em><span class="sig-paren">)</span> &#x2192; Tuple[int, List[Tuple[int, int]]]<a class="headerlink" href="#_sixdegrees._random_geometric_kleinberg_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a 1d Kleinberg network (with periodic boundary conditions) as edge list where node positions are uniformly distributed in the real-valued interval [0,N]. Connection probability of two nodes u and v is ~ d(u,v)^(mu-1) where d(u,v) is the pair’s distance in periodic boundary conditions. If you want to map from an ssmh, bear in mind that N=B^L and mu=log(xi)/log(B). DO NOT USE WITH <cite>use_theory_algorithm = True</cite>.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="_sixdegrees._random_geometric_kleinberg_network_coord_lists.html" class="btn btn-neutral float-right" title="_sixdegrees._random_geometric_kleinberg_network_coord_lists" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="_sixdegrees._random_geometric_small_world_network_coord_lists.html" class="btn btn-neutral" title="_sixdegrees._random_geometric_small_world_network_coord_lists" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Benjamin F. Maier.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.3',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -31,7 +31,7 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Small-World API" href="sixdegrees_small_world_api.html" />
+    <link rel="next" title="_sixdegrees._modified_small_world_network" href="_generate/_sixdegrees._modified_small_world_network.html" />
     <link rel="prev" title="Interactive" href="../visualizations/interactive.html" /> 
 
   
@@ -98,7 +98,41 @@
 </ul>
 <p class="caption"><span class="caption-text">Reference</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Relevant C++-core functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Relevant C++-core functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lattice-small-world-generators">Lattice small-world generators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_generate/_sixdegrees._modified_small_world_network.html">_sixdegrees._modified_small_world_network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generate/_sixdegrees._modified_small_world_network_coord_lists.html">_sixdegrees._modified_small_world_network_coord_lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generate/_sixdegrees._original_small_world_network.html">_sixdegrees._original_small_world_network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generate/_sixdegrees._original_small_world_network_coord_lists.html">_sixdegrees._original_small_world_network_coord_lists</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modular-hierarchical-generators">Modular hierarchical generators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_generate/_sixdegrees._modular_hierarchical_network.html">_sixdegrees._modular_hierarchical_network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generate/_sixdegrees._modular_hierarchical_network_coord_lists.html">_sixdegrees._modular_hierarchical_network_coord_lists</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lattice-kleinberg-generators">Lattice Kleinberg generators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_generate/_sixdegrees.kleinberg_network.html">_sixdegrees.kleinberg_network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generate/_sixdegrees.kleinberg_network_coord_lists.html">_sixdegrees.kleinberg_network_coord_lists</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#random-geometric-generators">Random geometric generators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_generate/_sixdegrees._random_geometric_small_world_network.html">_sixdegrees._random_geometric_small_world_network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generate/_sixdegrees._random_geometric_small_world_network_coord_lists.html">_sixdegrees._random_geometric_small_world_network_coord_lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generate/_sixdegrees._random_geometric_kleinberg_network.html">_sixdegrees._random_geometric_kleinberg_network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generate/_sixdegrees._random_geometric_kleinberg_network_coord_lists.html">_sixdegrees._random_geometric_kleinberg_network_coord_lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generate/_sixdegrees._twoD_random_geometric_kleinberg_network.html">_sixdegrees._twoD_random_geometric_kleinberg_network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generate/_sixdegrees._twoD_random_geometric_kleinberg_network_coord_lists.html">_sixdegrees._twoD_random_geometric_kleinberg_network_coord_lists</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#helper-functions">Helper functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_generate/_sixdegrees.fast_gnp.html">_sixdegrees.fast_gnp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generate/_sixdegrees.get_components.html">_sixdegrees.get_components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generate/_sixdegrees.get_kleinberg_connection_probability.html">_sixdegrees.get_kleinberg_connection_probability</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="sixdegrees_small_world_api.html">Small-World API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sixdegrees_modular_hierarchical_api.html">Modular-Hierarchical API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sixdegrees_random_geometric_api.html">Random-Geometric API</a></li>
@@ -170,7 +204,113 @@
             
   <div class="section" id="module-_sixdegrees">
 <span id="relevant-c-core-functions"></span><h1>Relevant C++-core functions<a class="headerlink" href="#module-_sixdegrees" title="Permalink to this headline">¶</a></h1>
-<p>Generate generalized small-world networks, including self-similar modular hierarchical and modified Kleinberg networks.</p>
+<p>Generate generalized small-world networks, including self-similar modular hierarchical and modified Kleinberg networks.”;</p>
+<div class="section" id="lattice-small-world-generators">
+<h2>Lattice small-world generators<a class="headerlink" href="#lattice-small-world-generators" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="_generate/_sixdegrees._modified_small_world_network.html#_sixdegrees._modified_small_world_network" title="_sixdegrees._modified_small_world_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_modified_small_world_network</span></code></a>(N,&nbsp;k,&nbsp;beta,&nbsp;…)</td>
+<td>Returns a variant of the Watts-Strogatz small world network model as a pair of (number_of_nodes, edge_list).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generate/_sixdegrees._modified_small_world_network_coord_lists.html#_sixdegrees._modified_small_world_network_coord_lists" title="_sixdegrees._modified_small_world_network_coord_lists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_modified_small_world_network_coord_lists</span></code></a>(N,&nbsp;…)</td>
+<td>Returns a variant of the Watts-Strogatz small world network model as lists of adjacency matrix coordinates.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="_generate/_sixdegrees._original_small_world_network.html#_sixdegrees._original_small_world_network" title="_sixdegrees._original_small_world_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_original_small_world_network</span></code></a>(N,&nbsp;k,&nbsp;p,&nbsp;…)</td>
+<td>Returns a Watts-Strogatz small world network as a pair of (number_of_nodes, edge_list).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generate/_sixdegrees._original_small_world_network_coord_lists.html#_sixdegrees._original_small_world_network_coord_lists" title="_sixdegrees._original_small_world_network_coord_lists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_original_small_world_network_coord_lists</span></code></a>(N,&nbsp;…)</td>
+<td>Returns a Watts-Strogatz small world network as lists of adjacency matrix coordinates.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="modular-hierarchical-generators">
+<h2>Modular hierarchical generators<a class="headerlink" href="#modular-hierarchical-generators" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="_generate/_sixdegrees._modular_hierarchical_network.html#_sixdegrees._modular_hierarchical_network" title="_sixdegrees._modular_hierarchical_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_modular_hierarchical_network</span></code></a>(B,&nbsp;L,&nbsp;k,&nbsp;xi,&nbsp;…)</td>
+<td>Returns a self-similar modular hierarchical network as an edge list.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generate/_sixdegrees._modular_hierarchical_network_coord_lists.html#_sixdegrees._modular_hierarchical_network_coord_lists" title="_sixdegrees._modular_hierarchical_network_coord_lists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_modular_hierarchical_network_coord_lists</span></code></a>(B,&nbsp;…)</td>
+<td>Returns a self-similar modular hierarchical network as lists of adjacency matrix coordinates.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lattice-kleinberg-generators">
+<h2>Lattice Kleinberg generators<a class="headerlink" href="#lattice-kleinberg-generators" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="_generate/_sixdegrees.kleinberg_network.html#_sixdegrees.kleinberg_network" title="_sixdegrees.kleinberg_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kleinberg_network</span></code></a>(N,&nbsp;k,&nbsp;mu,&nbsp;…)</td>
+<td>Returns a 1d Kleinberg network (with periodic boundary conditions) as edge list.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generate/_sixdegrees.kleinberg_network_coord_lists.html#_sixdegrees.kleinberg_network_coord_lists" title="_sixdegrees.kleinberg_network_coord_lists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kleinberg_network_coord_lists</span></code></a>(N,&nbsp;k,&nbsp;mu,&nbsp;…)</td>
+<td>Returns a 1d Kleinberg network (with periodic boundary conditions) as lists of adjacency matrix coordinates.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="random-geometric-generators">
+<h2>Random geometric generators<a class="headerlink" href="#random-geometric-generators" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="_generate/_sixdegrees._random_geometric_small_world_network.html#_sixdegrees._random_geometric_small_world_network" title="_sixdegrees._random_geometric_small_world_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_random_geometric_small_world_network</span></code></a>(N,&nbsp;k,&nbsp;…)</td>
+<td>Returns a variant of the Watts-Strogatz small world network model as a pair of (number_of_nodes, edge_list).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generate/_sixdegrees._random_geometric_small_world_network_coord_lists.html#_sixdegrees._random_geometric_small_world_network_coord_lists" title="_sixdegrees._random_geometric_small_world_network_coord_lists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_random_geometric_small_world_network_coord_lists</span></code></a>(N,&nbsp;…)</td>
+<td>Returns a variant of the Watts-Strogatz small world network model as lists of adjacency matrix coordinates.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="_generate/_sixdegrees._random_geometric_kleinberg_network.html#_sixdegrees._random_geometric_kleinberg_network" title="_sixdegrees._random_geometric_kleinberg_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_random_geometric_kleinberg_network</span></code></a>(N,&nbsp;k,&nbsp;…)</td>
+<td>Returns a 1d Kleinberg network (with periodic boundary conditions) as edge list where node positions are uniformly distributed in the real-valued interval [0,N].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generate/_sixdegrees._random_geometric_kleinberg_network_coord_lists.html#_sixdegrees._random_geometric_kleinberg_network_coord_lists" title="_sixdegrees._random_geometric_kleinberg_network_coord_lists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_random_geometric_kleinberg_network_coord_lists</span></code></a>(N,&nbsp;…)</td>
+<td>Returns a 1d Kleinberg network (with periodic boundary conditions) as lists of adjacency matrix coordinates, where node positions are uniformly distributed in the real-valued interval [0,N].</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="_generate/_sixdegrees._twoD_random_geometric_kleinberg_network.html#_sixdegrees._twoD_random_geometric_kleinberg_network" title="_sixdegrees._twoD_random_geometric_kleinberg_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_twoD_random_geometric_kleinberg_network</span></code></a>(N,&nbsp;…)</td>
+<td>Returns a 2d Kleinberg network (with or without periodic boundary conditions) as an edge list, where node positions are uniformly distributed in the real-valued unit square [0,1]^2.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generate/_sixdegrees._twoD_random_geometric_kleinberg_network_coord_lists.html#_sixdegrees._twoD_random_geometric_kleinberg_network_coord_lists" title="_sixdegrees._twoD_random_geometric_kleinberg_network_coord_lists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_twoD_random_geometric_kleinberg_network_coord_lists</span></code></a>(N,&nbsp;…)</td>
+<td>Returns a 2d Kleinberg network (with or without periodic boundary conditions) as lists of adjacency matrix coordinates, where node positions are uniformly distributed in the real-valued unit square [0,1]^2.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="helper-functions">
+<h2>Helper functions<a class="headerlink" href="#helper-functions" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="_generate/_sixdegrees.fast_gnp.html#_sixdegrees.fast_gnp" title="_sixdegrees.fast_gnp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fast_gnp</span></code></a>(N,&nbsp;p,&nbsp;start_node,&nbsp;seed)</td>
+<td>Returns a G(N,p) random graph in O(N+m) time as described by Batagelj and Brandes (in edge list format).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generate/_sixdegrees.get_components.html#_sixdegrees.get_components" title="_sixdegrees.get_components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_components</span></code></a>(N,&nbsp;edge_list,&nbsp;int]])</td>
+<td>Get a list of sets.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="_generate/_sixdegrees.get_kleinberg_connection_probability.html#_sixdegrees.get_kleinberg_connection_probability" title="_sixdegrees.get_kleinberg_connection_probability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_kleinberg_connection_probability</span></code></a>(N,&nbsp;k,&nbsp;mu)</td>
+<td>get a list of connection probabilities by neighbor distance</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
@@ -181,7 +321,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="sixdegrees_small_world_api.html" class="btn btn-neutral float-right" title="Small-World API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="_generate/_sixdegrees._modified_small_world_network.html" class="btn btn-neutral float-right" title="_sixdegrees._modified_small_world_network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../visualizations/interactive.html" class="btn btn-neutral" title="Interactive" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

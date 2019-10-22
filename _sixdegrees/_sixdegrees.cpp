@@ -51,8 +51,65 @@ using namespace std;
 namespace py = pybind11;
 
 PYBIND11_MODULE(_sixdegrees, m) {
-    m.doc() = "Generate generalized small-world networks, including self-similar modular hierarchical and modified Kleinberg networks.";
-    
+    m.doc() = R"pydoc(
+        Generate generalized small-world networks, including self-similar modular hierarchical and modified Kleinberg networks.";
+
+        .. currentmodule:: _sixdegrees
+
+        Lattice small-world generators
+        ------------------------------
+
+        .. autosummary::
+            :toctree: _generate
+
+            _modified_small_world_network
+            _modified_small_world_network_coord_lists
+            _original_small_world_network
+            _original_small_world_network_coord_lists
+
+        Modular hierarchical generators
+        -------------------------------
+
+        .. autosummary::
+            :toctree: _generate
+
+            _modular_hierarchical_network
+            _modular_hierarchical_network_coord_lists
+
+        Lattice Kleinberg generators
+        ----------------------------
+
+        .. autosummary::
+            :toctree: _generate
+
+            kleinberg_network
+            kleinberg_network_coord_lists
+
+            
+        Random geometric generators
+        ---------------------------
+
+        .. autosummary::
+            :toctree: _generate
+
+            _random_geometric_small_world_network
+            _random_geometric_small_world_network_coord_lists
+            _random_geometric_kleinberg_network
+            _random_geometric_kleinberg_network_coord_lists
+            _twoD_random_geometric_kleinberg_network
+            _twoD_random_geometric_kleinberg_network_coord_lists
+
+        Helper functions
+        ----------------
+
+        .. autosummary::
+            :toctree: _generate
+
+            fast_gnp
+            get_components
+            get_kleinberg_connection_probability
+    )pydoc";
+
     m.def("_modular_hierarchical_network", &fast_ssmh_edge_list, "Returns a self-similar modular hierarchical network as an edge list. If you want to compare it to a 1d Kleinberg network, be reminded that mu = ",
             py::arg("B"),
             py::arg("L"),
