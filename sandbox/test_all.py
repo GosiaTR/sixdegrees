@@ -16,7 +16,6 @@ from sixdegrees.utils import to_sparse_matrix
 
 def get_k_and_k2(A):
     k = np.array(A.sum(axis=0),dtype=float).flatten()
-    #print(k)
     return np.mean(k), np.mean(k**2)
 
 if __name__=="__main__":

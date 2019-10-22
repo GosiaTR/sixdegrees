@@ -111,7 +111,10 @@ vector < set < size_t > * > random_geometric_kleinberg_neighbor_set(
 
     bool list_was_empty = (r.size() == 0);
 
-    double kappa = 1-mu;
+    double kappa = -(1.0-mu);
+
+    assert(kappa <= 0.0);
+
     //initialize random generators
     mt19937_64 generator;
     if (seed == 0)
@@ -120,7 +123,6 @@ vector < set < size_t > * > random_geometric_kleinberg_neighbor_set(
         generator.seed(seed);
    
     uniform_real_distribution<double> random_number(0., 1.);
-    uniform_int_distribution<size_t> random_node(0, N-1);
     
     vector < set < size_t > * > G;
     for (size_t node = 0; node < N; ++node)
@@ -151,10 +153,10 @@ vector < set < size_t > * > random_geometric_kleinberg_neighbor_set(
     // start the summation from the last entries as these will produce
     // the smallest weights and hence the whole sum will have less accumulation error.
     double norm = 0.0;
-    for(vector<edge_distance>::reverse_iterator it = distances.rbegin(); it != distances.rend(); ++it)
+    for(vector<edge_distance>::reverse_iterator edge = distances.rbegin(); edge != distances.rend(); ++edge)
     {
-        double weight = pow(get<1>(*it), -kappa);
-        get<2>(*it) = weight; // save r^-kappa for later use
+        double weight = pow(get<1>(*edge), kappa);
+        get<2>(*edge) = weight; // save r^kappa for later use
         norm += weight;
     }
 
@@ -164,8 +166,10 @@ vector < set < size_t > * > random_geometric_kleinberg_neighbor_set(
     // iterate through edges
     auto edge = distances.begin();
     double excess_edges = C * get<2>(*edge) - 1.0;
+    size_t l = 0;
 
-    // all distances where the total number of excess edges still exceeds 0 
+
+    // all distances where the total number of excess edges still exceeds zero 
     // are naturally produced.
     while ((excess_edges > 0.0) and (edge != distances.end()))
     {
@@ -175,11 +179,12 @@ vector < set < size_t > * > random_geometric_kleinberg_neighbor_set(
         G[j]->insert(i);
 
         ++edge;
+        ++l;
         if (edge != distances.end())
             excess_edges += C * get<2>(*edge) - 1.0;
     }
 
-    // all other edges are only produced with probability C*r^-kappa
+    // all other edges are only produced with probability C*r^kappa
     while (edge != distances.end())
     {
         const double &probability = C * get<2>(*edge);

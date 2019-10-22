@@ -103,7 +103,6 @@ def random_geometric_small_world_network(N,
     # the interval [0,N]
     
     X.sort()
-    print(X)
     _N, _edges = _random_geometric_small_world_network(
                                     N,
                                     k,
@@ -138,7 +137,7 @@ def random_geometric_kleinberg_network_coord_lists(
     
     X.sort() 
 
-    _N, row, col = _random_geometric_small_world_network_coord_lists(
+    _N, row, col = _random_geometric_kleinberg_network_coord_lists(
                                     N,
                                     k,
                                     mu,
@@ -212,7 +211,6 @@ def twoD_random_geometric_kleinberg_network_coord_lists(
                                                    epsilon=epsilon, 
                                                    use_periodic_boundary_conditions=periodic_boundary_conditions,
                                                    )
-
 
     _N, row, col = _twoD_random_geometric_kleinberg_network_coord_lists(
                                     N,

@@ -160,42 +160,21 @@ vector < set < size_t > * > twoD_random_geometric_kleinberg_neighbor_set(
 
             if (r <= rmin) 
             {
-                for(size_t i = 0; i<2; ++i)
-                {
-                    size_t s = source, 
-                           t = target;
-
-                    if (i == 1)
-                    {
-                        s = target;
-                        t = source;
-                    }
-
-                    G[t]->insert(s);
-                    G[s]->insert(t);
-                }
+                const size_t &s = source;
+                const size_t &t = target;
+                G[t]->insert(s);
+                G[s]->insert(t);
             }
             else
             {
                 double p = prefactor * pow(r, kappa);
 
-                // test both source and target
-                for(size_t i = 0; i<2; ++i)
+                if (uni_random(generator) < p)
                 {
-                    size_t s = source, 
-                           t = target;
-
-                    if (i == 1)
-                    {
-                        s = target;
-                        t = source;
-                    }
-
-                    if (uni_random(generator) < p)
-                    {
-                        G[t]->insert(s);
-                        G[s]->insert(t);
-                    }
+                    const size_t &s = source;
+                    const size_t &t = target;
+                    G[t]->insert(s);
+                    G[s]->insert(t);
                 }
             }
         }
