@@ -23,7 +23,7 @@ print("measuring only creation")
 bar = progressbar.ProgressBar()
 for meas in bar(range(N_meas)):
     tic = time.time()
-    N, G2 = sixdegrees.fast_ssmh(B,L,k,xi,seed=seed+1,allow_probability_redistribution=True,use_giant_component=False)
+    N, G2 = sixdegrees.modular_hierarchical_network(B,L,k,xi,seed=seed+1,allow_probability_redistribution=True,use_giant_component=False)
     toc = time.time()
     t_c += (toc-tic) / N_meas
     k_c += len(G2)*2./B**L / N_meas

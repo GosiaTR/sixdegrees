@@ -2,6 +2,7 @@
 """
 """
 
+from .metadata import __version__
 from _sixdegrees import *
 
-from .metadata import __version__
+from .random_geometric_base import *

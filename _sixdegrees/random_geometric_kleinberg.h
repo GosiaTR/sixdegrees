@@ -18,6 +18,7 @@ pair < size_t, vector < pair < size_t, size_t > > > random_geometric_kleinberg_e
         size_t N,
         double k,
         double mu,
+        vector < double > r,
         bool use_giant_component,
         bool delete_non_giant_component_nodes,
         bool use_theory_algorithm = false,
@@ -29,6 +30,7 @@ vector < set < size_t > * > theoretical_random_geometric_kleinberg_neighbor_set(
         size_t N,
         double k,
         double mu,
+        vector < double > &r,
         bool use_giant_component,
         size_t seed = 0,
         double epsilon = 0
@@ -38,6 +40,7 @@ vector < set < size_t > * > random_geometric_kleinberg_neighbor_set(
         size_t N,
         double k,
         double mu,
+        vector < double > &r,
         bool use_giant_component,
         size_t seed = 0
         );
@@ -46,6 +49,7 @@ tuple < size_t, vector <size_t>, vector<size_t> > random_geometric_kleinberg_coo
         size_t N,
         double k,
         double mu,
+        vector < double > r,
         bool use_giant_component,
         bool delete_non_giant_component_nodes,
         bool use_theory_algorithm = false,

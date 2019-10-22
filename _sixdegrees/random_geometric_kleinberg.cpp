@@ -46,6 +46,7 @@ tuple < size_t, vector <size_t>, vector<size_t> > random_geometric_kleinberg_coo
         size_t N,
         double k,
         double mu,
+        vector < double > r,
         bool use_giant_component,
         bool delete_non_giant_component_nodes,
         bool use_theory_algorithm,
@@ -56,9 +57,9 @@ tuple < size_t, vector <size_t>, vector<size_t> > random_geometric_kleinberg_coo
     vector < set < size_t > * > G;
 
     if (use_theory_algorithm)
-        G = theoretical_random_geometric_kleinberg_neighbor_set(N,k,mu,use_giant_component,seed,epsilon);
+        G = theoretical_random_geometric_kleinberg_neighbor_set(N,k,mu,r,use_giant_component,seed,epsilon);
     else
-        G = random_geometric_kleinberg_neighbor_set(N,k,mu,use_giant_component,seed);
+        G = random_geometric_kleinberg_neighbor_set(N,k,mu,r,use_giant_component,seed);
 
     size_t new_N = N;
     vector < size_t > rows;
@@ -107,6 +108,7 @@ pair < size_t, vector < pair < size_t, size_t > > > random_geometric_kleinberg_e
         size_t N,
         double k,
         double mu,
+        vector < double > r,
         bool use_giant_component,
         bool delete_non_giant_component_nodes,
         bool use_theory_algorithm,
@@ -119,9 +121,9 @@ pair < size_t, vector < pair < size_t, size_t > > > random_geometric_kleinberg_e
     vector < set < size_t > * > G;
 
     if (use_theory_algorithm)
-        G = theoretical_random_geometric_kleinberg_neighbor_set(N,k,mu,use_giant_component,seed,epsilon);
+        G = theoretical_random_geometric_kleinberg_neighbor_set(N,k,mu,r,use_giant_component,seed,epsilon);
     else
-        G = random_geometric_kleinberg_neighbor_set(N,k,mu,use_giant_component,seed);
+        G = random_geometric_kleinberg_neighbor_set(N,k,mu,r,use_giant_component,seed);
 
     vector < pair < size_t, size_t > > edge_list;
 
@@ -174,6 +176,7 @@ vector < set < size_t > * > random_geometric_kleinberg_neighbor_set(
         size_t N,
         double k,
         double mu,
+        vector < double > &r,
         bool use_giant_component,
         size_t seed
         )
@@ -183,6 +186,9 @@ vector < set < size_t > * > random_geometric_kleinberg_neighbor_set(
     assert(N>1);
     assert(mu <= 1.);
     assert(k < N);
+    assert((r.size() == N) or (r.size()==0));
+
+    bool list_was_empty = (r.size() == 0);
 
     double kappa = 1-mu;
     //initialize random generators
@@ -196,16 +202,17 @@ vector < set < size_t > * > random_geometric_kleinberg_neighbor_set(
     uniform_int_distribution<size_t> random_node(0, N-1);
     
     vector < set < size_t > * > G;
-    vector < double > r;
     for (size_t node = 0; node < N; ++node)
     {
         G.push_back( new set < size_t >() );
-        r.push_back( random_number(generator)*double(N) );
+        if (list_was_empty)
+            r.push_back( random_number(generator)*double(N) );
     }
 
     // sort position so one knows that the node position 0 is the
     // first in [0,N] and so forth
-    sort(r.begin(), r.end());
+    if (list_was_empty)
+        sort(r.begin(), r.end());
 
     vector < edge_distance > distances;
 
@@ -222,7 +229,7 @@ vector < set < size_t > * > random_geometric_kleinberg_neighbor_set(
     }
 
     // sort so one can properly assign the short-range edges
-    sort(distances.begin(),distances.end(), compare_distance);
+    sort(distances.begin(), distances.end(), compare_distance);
 
     // sum up in order to properly norm the distribution.
     // start the summation from the last entries as these will produce
@@ -300,6 +307,7 @@ vector < set < size_t > * > theoretical_random_geometric_kleinberg_neighbor_set(
         size_t N,
         double k,
         double mu,
+        vector < double > &r,
         bool use_giant_component,
         size_t seed,
         double epsilon
@@ -311,6 +319,9 @@ vector < set < size_t > * > theoretical_random_geometric_kleinberg_neighbor_set(
     assert(mu <= 1.);
     assert(k < N);
     assert(epsilon >= 0.);
+    assert((r.size() == N) or (r.size()==0));
+
+    bool list_was_empty = (r.size() == 0);
 
     // convert to proper power-law convention ~ r^(-kappa)
     double kappa = -(mu - 1.0);
@@ -357,16 +368,17 @@ vector < set < size_t > * > theoretical_random_geometric_kleinberg_neighbor_set(
     uniform_int_distribution<size_t> random_node(0, N-1);
     
     vector < set < size_t > * > G;
-    vector < double > r;
     for (size_t node = 0; node < N; ++node)
     {
         G.push_back( new set < size_t >() );
-        r.push_back( random_number(generator)*double(N) );
+        if (list_was_empty)
+            r.push_back( random_number(generator)*double(N) );
     }
 
     // sort position so one knows that the node position 0 is the
     // first in [0,N] and so forth
-    sort(r.begin(), r.end());
+    if (list_was_empty)
+        sort(r.begin(), r.end());
 
     // loop over all pairs and draw according to the right probability
     // (this is a lazy slow algorithm running in O(N^2) time

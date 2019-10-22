@@ -11,6 +11,7 @@ pair < size_t, vector < pair < size_t, size_t > > > random_geometric_small_world
         size_t N,
         double k,
         double p,
+        vector < double > r,
         bool use_giant_component,
         bool delete_non_giant_component_nodes,
         size_t seed = 0
@@ -20,6 +21,7 @@ vector < set < size_t > * > random_geometric_small_world_neighbor_set(
         size_t N,
         double k,
         double p,
+        vector < double > &r,
         bool use_giant_component,
         size_t seed = 0
         );
@@ -28,6 +30,7 @@ tuple < size_t, vector <size_t>, vector<size_t> > random_geometric_small_world_c
         size_t N,
         double k,
         double p,
+        vector < double > r,
         bool use_giant_component,
         bool delete_non_giant_component_nodes,
         size_t seed = 0

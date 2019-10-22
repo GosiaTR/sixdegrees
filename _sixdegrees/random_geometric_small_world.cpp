@@ -46,6 +46,7 @@ tuple < size_t, vector <size_t>, vector<size_t> > random_geometric_small_world_c
         size_t N,
         double k,
         double p,
+        vector < double > r,
         bool use_giant_component,
         bool delete_non_giant_component_nodes,
         size_t seed
@@ -53,7 +54,7 @@ tuple < size_t, vector <size_t>, vector<size_t> > random_geometric_small_world_c
 {
     vector < set < size_t > * > G;
 
-    G = random_geometric_small_world_neighbor_set(N,k,p,use_giant_component,seed);
+    G = random_geometric_small_world_neighbor_set(N,k,p,r,use_giant_component,seed);
 
     size_t new_N = N;
     vector < size_t > rows;
@@ -102,6 +103,7 @@ pair < size_t, vector < pair < size_t, size_t > > > random_geometric_small_world
         size_t N,
         double k,
         double p,
+        vector < double > r,
         bool use_giant_component,
         bool delete_non_giant_component_nodes,
         size_t seed
@@ -111,7 +113,7 @@ pair < size_t, vector < pair < size_t, size_t > > > random_geometric_small_world
 
     vector < set < size_t > * > G;
 
-    G = random_geometric_small_world_neighbor_set(N,k,p,use_giant_component,seed);
+    G = random_geometric_small_world_neighbor_set(N,k,p,r,use_giant_component,seed);
 
     vector < pair < size_t, size_t > > edge_list;
 
@@ -164,6 +166,7 @@ vector < set < size_t > * > random_geometric_small_world_neighbor_set(
         size_t N,
         double k,
         double p,
+        vector < double > &r,
         bool use_giant_component,
         size_t seed
         )
@@ -174,11 +177,14 @@ vector < set < size_t > * > random_geometric_small_world_neighbor_set(
     assert(p <= 1.);
     assert(p >= 0.);
     assert(k < N);
+    assert((r.size()) == N or (r.size() == 0));
 
     double p0 = k / (k - p*k + p*(N-1.0));
     double p1 = p0 * p;
 
     double radius = 0.5*k*double(N)/(N-1.0);
+
+    bool list_was_empty = (r.size() == 0);
 
     //initialize random generators
     default_random_engine generator;
@@ -186,21 +192,20 @@ vector < set < size_t > * > random_geometric_small_world_neighbor_set(
         randomly_seed_engine(generator);
     else
         generator.seed(seed);
-   
+
     uniform_real_distribution<double> random_number(0., 1.);
     uniform_int_distribution<size_t> random_node(0, N-1);
     
     vector < set < size_t > * > G;
-    vector < double > r;
     for (size_t node = 0; node < N; ++node)
     {
         G.push_back( new set < size_t >() );
-        r.push_back( random_number(generator)*double(N) );
+        if (list_was_empty)
+            r.push_back( random_number(generator)*double(N) );
     }
 
-    // sort position so one knows that the node position 0 is the
-    // first in [0,N] and so forth
-    sort(r.begin(), r.end());
+    if (list_was_empty)
+        sort(r.begin(),r.end());
 
     // loop over all pairs and draw according to the right probability
     // (this is a lazy slow algorithm running in O(N^2) time
