@@ -48,7 +48,7 @@ void add_random_subgraph(
     else if (p>0.0)
     {
         size_t v = 1;
-        long w = -1;
+        ssize_t w = -1;
         while (v < n)
         {
             double r = distribution(generator);

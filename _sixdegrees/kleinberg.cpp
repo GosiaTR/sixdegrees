@@ -109,7 +109,7 @@ vector < set < size_t > * > kleinberg_neighbor_set(
 
 
     double k_meas = 0.;
-    for(int i=0; i<N-1; i++)
+    for(size_t i=0; i<N-1; i++)
         k_meas += pmf[i];
 
     //loop over pairs
