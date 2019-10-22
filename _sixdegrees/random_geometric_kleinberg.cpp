@@ -47,8 +47,8 @@ tuple < size_t, vector <size_t>, vector<size_t> > random_geometric_kleinberg_coo
         double k,
         double mu,
         vector < double > r,
-        bool use_giant_component,
-        bool delete_non_giant_component_nodes,
+        bool use_largest_component,
+        bool delete_non_largest_component_nodes,
         bool use_theory_algorithm,
         size_t seed,
         double epsilon
@@ -57,50 +57,14 @@ tuple < size_t, vector <size_t>, vector<size_t> > random_geometric_kleinberg_coo
     vector < set < size_t > * > G;
 
     if (use_theory_algorithm)
-        G = theoretical_random_geometric_kleinberg_neighbor_set(N,k,mu,r,use_giant_component,seed,epsilon);
+        G = theoretical_random_geometric_kleinberg_neighbor_set(N,k,mu,r,use_largest_component,seed,epsilon);
     else
-        G = random_geometric_kleinberg_neighbor_set(N,k,mu,r,use_giant_component,seed);
+        G = random_geometric_kleinberg_neighbor_set(N,k,mu,r,use_largest_component,seed);
 
-    size_t new_N = N;
     vector < size_t > rows;
     vector < size_t > cols;
+    size_t new_N = neighbor_set_to_coord_lists(G,rows,cols,use_largest_component,delete_non_largest_component_nodes);
 
-    if ( use_giant_component && delete_non_giant_component_nodes )
-    {
-        vector < size_t > map_to_new_ids(N);
-        size_t current_id = 0;
-        for(size_t u = 0; u < N; u++)
-            if (G[u]->size()>0)
-            {
-                map_to_new_ids[u] = current_id;
-                current_id++;
-            }
-
-        new_N = current_id;
-
-        for(size_t u = 0; u < N; u++)
-        {
-            for( auto const& v: *G[u] )
-            {
-                rows.push_back(map_to_new_ids[u]);
-                cols.push_back(map_to_new_ids[v]);
-            }
-            delete G[u];
-        }
-    }
-    else
-    {
-        for(size_t u = 0; u < N; u++)
-        {
-            for( auto const& v: *G[u] )
-            {
-                rows.push_back(u);
-                cols.push_back(v);
-            }
-            delete G[u];
-        }
-    }
-    
     return make_tuple(new_N,rows,cols);
 }
     
@@ -109,65 +73,22 @@ pair < size_t, vector < pair < size_t, size_t > > > random_geometric_kleinberg_e
         double k,
         double mu,
         vector < double > r,
-        bool use_giant_component,
-        bool delete_non_giant_component_nodes,
+        bool use_largest_component,
+        bool delete_non_largest_component_nodes,
         bool use_theory_algorithm,
         size_t seed,
         double epsilon
         )
 {
-    size_t new_N = N;
-
     vector < set < size_t > * > G;
 
     if (use_theory_algorithm)
-        G = theoretical_random_geometric_kleinberg_neighbor_set(N,k,mu,r,use_giant_component,seed,epsilon);
+        G = theoretical_random_geometric_kleinberg_neighbor_set(N,k,mu,r,use_largest_component,seed,epsilon);
     else
-        G = random_geometric_kleinberg_neighbor_set(N,k,mu,r,use_giant_component,seed);
+        G = random_geometric_kleinberg_neighbor_set(N,k,mu,r,use_largest_component,seed);
 
     vector < pair < size_t, size_t > > edge_list;
-
-    if ( use_giant_component && delete_non_giant_component_nodes )
-    {
-        vector < size_t > map_to_new_ids(N);
-        size_t current_id = 0;
-        for(size_t u = 0; u < N; u++)
-            if (G[u]->size()>0)
-            {
-                map_to_new_ids[u] = current_id;
-                current_id++;
-            }
-
-        new_N = current_id;
-
-        for(size_t u = 0; u < N; u++)
-        {
-            size_t u_ = map_to_new_ids[u];
-            for( auto const& v: *G[u] )
-            {
-                size_t v_ = map_to_new_ids[v];
-                if (u_<v_)
-                {
-                    edge_list.push_back( make_pair( u_, v_ ) );
-                }
-            }
-            delete G[u];
-        }
-    }
-    else
-    {
-        for(size_t u = 0; u < N; u++)
-        {
-            for( auto const& v: *G[u] )
-            {
-                if (u<v)
-                {
-                    edge_list.push_back( make_pair(u,v) );
-               }
-            }
-            delete G[u];
-        }
-    }
+    size_t new_N = neighbor_set_to_edge_list(G,edge_list,use_largest_component,delete_non_largest_component_nodes);
     
     return make_pair(new_N,edge_list);
 }
@@ -177,7 +98,7 @@ vector < set < size_t > * > random_geometric_kleinberg_neighbor_set(
         double k,
         double mu,
         vector < double > &r,
-        bool use_giant_component,
+        bool use_largest_component,
         size_t seed
         )
 {
@@ -192,7 +113,7 @@ vector < set < size_t > * > random_geometric_kleinberg_neighbor_set(
 
     double kappa = 1-mu;
     //initialize random generators
-    default_random_engine generator;
+    mt19937_64 generator;
     if (seed == 0)
         randomly_seed_engine(generator);
     else
@@ -208,11 +129,6 @@ vector < set < size_t > * > random_geometric_kleinberg_neighbor_set(
         if (list_was_empty)
             r.push_back( random_number(generator)*double(N) );
     }
-
-    // sort position so one knows that the node position 0 is the
-    // first in [0,N] and so forth
-    if (list_was_empty)
-        sort(r.begin(), r.end());
 
     vector < edge_distance > distances;
 
@@ -251,7 +167,7 @@ vector < set < size_t > * > random_geometric_kleinberg_neighbor_set(
 
     // all distances where the total number of excess edges still exceeds 0 
     // are naturally produced.
-    while (excess_edges > 0.0 and edge != distances.end())
+    while ((excess_edges > 0.0) and (edge != distances.end()))
     {
         size_t const &i = (get<0>(*edge)).first;
         size_t const &j = (get<0>(*edge)).second;
@@ -280,9 +196,9 @@ vector < set < size_t > * > random_geometric_kleinberg_neighbor_set(
     }
 
 
-    if (use_giant_component)
+    if (use_largest_component)
     {
-        get_giant_component(G);
+        get_largest_component(G);
         return G;
     }
     else
@@ -308,7 +224,7 @@ vector < set < size_t > * > theoretical_random_geometric_kleinberg_neighbor_set(
         double k,
         double mu,
         vector < double > &r,
-        bool use_giant_component,
+        bool use_largest_component,
         size_t seed,
         double epsilon
         )
@@ -358,7 +274,7 @@ vector < set < size_t > * > theoretical_random_geometric_kleinberg_neighbor_set(
     double p_Erdos_Renyi = k/(N-1.0);
 
     //initialize random generators
-    default_random_engine generator;
+    mt19937_64 generator;
     if (seed == 0)
         randomly_seed_engine(generator);
     else
@@ -409,9 +325,9 @@ vector < set < size_t > * > theoretical_random_geometric_kleinberg_neighbor_set(
         }
     }
 
-    if (use_giant_component)
+    if (use_largest_component)
     {
-        get_giant_component(G);
+        get_largest_component(G);
         return G;
     }
     else

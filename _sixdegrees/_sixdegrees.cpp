@@ -43,6 +43,7 @@
 #include "original_small_world.h"
 #include "random_geometric_small_world.h"
 #include "random_geometric_kleinberg.h"
+#include "twoD_random_geometric_kleinberg.h"
 //#include "ResultClasses.h"
 //#include "test.h"
 
@@ -52,25 +53,25 @@ namespace py = pybind11;
 PYBIND11_MODULE(_sixdegrees, m) {
     m.doc() = "Generate generalized small-world networks, including self-similar modular hierarchical and modified Kleinberg networks.";
     
-    m.def("modular_hierarchical_network", &fast_ssmh_edge_list, "Returns a self-similar modular hierarchical network as an edge list. If you want to compare it to a 1d Kleinberg network, be reminded that mu = ",
+    m.def("_modular_hierarchical_network", &fast_ssmh_edge_list, "Returns a self-similar modular hierarchical network as an edge list. If you want to compare it to a 1d Kleinberg network, be reminded that mu = ",
             py::arg("B"),
             py::arg("L"),
             py::arg("k"),
             py::arg("xi"),
-            py::arg("use_giant_component") = false,
-            py::arg("delete_non_giant_component_nodes") = true,
-            py::arg("allow_probability_redistribution") = false,
+            py::arg("use_largest_component") = false,
+            py::arg("delete_non_largest_component_nodes") = true,
+            py::arg("allow_probability_redistribution") = true,
             py::arg("seed") = 0
             );
 
-    m.def("modular_hierarchical_coord_lists", &fast_ssmh_coord_lists, "Returns a self-similar modular hierarchical network as lists of adjacency matrix coordinates.",
+    m.def("_modular_hierarchical_network_coord_lists", &fast_ssmh_coord_lists, "Returns a self-similar modular hierarchical network as lists of adjacency matrix coordinates.",
             py::arg("B"),
             py::arg("L"),
             py::arg("k"),
             py::arg("xi"),
-            py::arg("use_giant_component") = false,
-            py::arg("delete_non_giant_component_nodes") = true,
-            py::arg("allow_probability_redistribution") = false,
+            py::arg("use_largest_component") = false,
+            py::arg("delete_non_largest_component_nodes") = true,
+            py::arg("allow_probability_redistribution") = true,
             py::arg("seed") = 0
             );
 
@@ -78,8 +79,8 @@ PYBIND11_MODULE(_sixdegrees, m) {
             py::arg("N"),
             py::arg("k"),
             py::arg("mu"),
-            py::arg("use_giant_component") = false,
-            py::arg("delete_non_giant_component_nodes") = true,
+            py::arg("use_largest_component") = false,
+            py::arg("delete_non_largest_component_nodes") = true,
             py::arg("seed") = 0
             );
 
@@ -87,8 +88,8 @@ PYBIND11_MODULE(_sixdegrees, m) {
             py::arg("N"),
             py::arg("k"),
             py::arg("mu"),
-            py::arg("use_giant_component") = false,
-            py::arg("delete_non_giant_component_nodes") = true,
+            py::arg("use_largest_component") = false,
+            py::arg("delete_non_largest_component_nodes") = true,
             py::arg("seed") = 0
             );
 
@@ -97,8 +98,8 @@ PYBIND11_MODULE(_sixdegrees, m) {
             py::arg("k"),
             py::arg("mu"),
             py::arg("X"),
-            py::arg("use_giant_component") = false,
-            py::arg("delete_non_giant_component_nodes") = true,
+            py::arg("use_largest_component") = false,
+            py::arg("delete_non_largest_component_nodes") = true,
             py::arg("use_theory_algorithm") = false,
             py::arg("seed") = 0,
             py::arg("epsilon") = 0.0
@@ -109,47 +110,76 @@ PYBIND11_MODULE(_sixdegrees, m) {
             py::arg("k"),
             py::arg("mu"),
             py::arg("X"),
-            py::arg("use_giant_component") = false,
-            py::arg("delete_non_giant_component_nodes") = true,
+            py::arg("use_largest_component") = false,
+            py::arg("delete_non_largest_component_nodes") = true,
             py::arg("use_theory_algorithm") = false,
             py::arg("seed") = 0,
             py::arg("epsilon") = 0.0
             );
 
-    m.def("original_small_world_network", &original_small_world_edge_list, "Returns a Watts-Strogatz small world network as a pair of (number_of_nodes, edge_list). Note that at p = 1, the generated networks are not equal to Erdos-Renyi graphs. The degree k has to be an even integer.",
+    m.def("_twoD_random_geometric_kleinberg_network", &twoD_random_geometric_kleinberg_edge_list, 
+            R"pydoc(Returns a 2d Kleinberg network (with or without periodic boundary conditions) as an edge list, where node positions are uniformly distributed in the real-valued unit square [0,1]^2. You need to provide two lists X, Y of N iid random numbers drawn uniformly from [0,1]. Connection probability of two nodes u and v is ~ d(u,v)^kappa where d(u,v) is the pair's Euclidean distance.)pydoc",
+            py::arg("N"),
+            py::arg("prefactor"),
+            py::arg("rmin"),
+            py::arg("kappa"),
+            py::arg("X"),
+            py::arg("Y"),
+            py::arg("periodic_boundary_conditions") = true,
+            py::arg("use_largest_component") = false,
+            py::arg("delete_non_largest_component_nodes") = true,
+            py::arg("seed") = 0
+            );
+
+    m.def("_twoD_random_geometric_kleinberg_network_coord_lists", &twoD_random_geometric_kleinberg_coord_lists, 
+            R"pydoc(Returns a 2d Kleinberg network (with or without periodic boundary conditions) as lists of adjacency matrix coordinates, where node positions are uniformly distributed in the real-valued unit square [0,1]^2. You need to provide two lists X, Y of N iid random numbers drawn uniformly from [0,1]. Connection probability of two nodes u and v is ~ d(u,v)^kappa where d(u,v) is the pair's Euclidean distance.)pydoc",
+            py::arg("N"),
+            py::arg("prefactor"),
+            py::arg("rmin"),
+            py::arg("kappa"),
+            py::arg("X"),
+            py::arg("Y"),
+            py::arg("periodic_boundary_conditions") = true,
+            py::arg("use_largest_component") = false,
+            py::arg("delete_non_largest_component_nodes") = true,
+            py::arg("seed") = 0
+            );
+
+
+    m.def("_original_small_world_network", &original_small_world_edge_list, "Returns a Watts-Strogatz small world network as a pair of (number_of_nodes, edge_list). Note that at p = 1, the generated networks are not equal to Erdos-Renyi graphs. The degree k has to be an even integer.",
             py::arg("N"),
             py::arg("k"),
             py::arg("p"),
-            py::arg("use_giant_component") = false,
-            py::arg("delete_non_giant_component_nodes") = true,
+            py::arg("use_largest_component") = false,
+            py::arg("delete_non_largest_component_nodes") = true,
             py::arg("seed") = 0
             );
 
-    m.def("original_small_world_network_coord_lists", &original_small_world_coord_lists, "Returns a Watts-Strogatz small world network as lists of adjacency matrix coordinates. Note that at p = 1, the generated networks are not equal to Erdos-Renyi graphs. The degree k has to be an even integer",
+    m.def("_original_small_world_network_coord_lists", &original_small_world_coord_lists, "Returns a Watts-Strogatz small world network as lists of adjacency matrix coordinates. Note that at p = 1, the generated networks are not equal to Erdos-Renyi graphs. The degree k has to be an even integer",
             py::arg("N"),
             py::arg("k"),
             py::arg("X"),
-            py::arg("use_giant_component") = false,
-            py::arg("delete_non_giant_component_nodes") = true,
+            py::arg("use_largest_component") = false,
+            py::arg("delete_non_largest_component_nodes") = true,
             py::arg("seed") = 0
             );
 
-    m.def("modified_small_world_network", &modified_small_world_edge_list, "Returns a variant of the Watts-Strogatz small world network model as a pair of (number_of_nodes, edge_list). In this variant, at p = 1, the generated networks are equal to Erdos-Renyi graphs. The degree k has to be an even integer.",
+    m.def("_modified_small_world_network", &modified_small_world_edge_list, "Returns a variant of the Watts-Strogatz small world network model as a pair of (number_of_nodes, edge_list). In this variant, at p = 1, the generated networks are equal to Erdos-Renyi graphs. The degree k has to be an even integer.",
             py::arg("N"),
             py::arg("k"),
             py::arg("beta"),
-            py::arg("use_giant_component") = false,
-            py::arg("delete_non_giant_component_nodes") = true,
+            py::arg("use_largest_component") = false,
+            py::arg("delete_non_largest_component_nodes") = true,
             py::arg("use_fast_algorithm") = true,
             py::arg("seed") = 0
             );
 
-    m.def("modified_small_world_network_coord_lists", &modified_small_world_coord_lists, "Returns a variant of the Watts-Strogatz small world network model as lists of adjacency matrix coordinates. In this variant, at p = 1, the generated networks are equal to Erdos-Renyi graphs. The degree k has to be an even integer",
+    m.def("_modified_small_world_network_coord_lists", &modified_small_world_coord_lists, "Returns a variant of the Watts-Strogatz small world network model as lists of adjacency matrix coordinates. In this variant, at p = 1, the generated networks are equal to Erdos-Renyi graphs. The degree k has to be an even integer",
             py::arg("N"),
             py::arg("k"),
             py::arg("beta"),
-            py::arg("use_giant_component") = false,
-            py::arg("delete_non_giant_component_nodes") = true,
+            py::arg("use_largest_component") = false,
+            py::arg("delete_non_largest_component_nodes") = true,
             py::arg("use_fast_algorithm") = true,
             py::arg("seed") = 0
             );
@@ -160,8 +190,8 @@ PYBIND11_MODULE(_sixdegrees, m) {
             py::arg("k"),
             py::arg("beta"),
             py::arg("X"),
-            py::arg("use_giant_component") = false,
-            py::arg("delete_non_giant_component_nodes") = true,
+            py::arg("use_largest_component") = false,
+            py::arg("delete_non_largest_component_nodes") = true,
             py::arg("seed") = 0
             );
 
@@ -171,8 +201,8 @@ PYBIND11_MODULE(_sixdegrees, m) {
             py::arg("k"),
             py::arg("beta"),
             py::arg("X"),
-            py::arg("use_giant_component") = false,
-            py::arg("delete_non_giant_component_nodes") = true,
+            py::arg("use_largest_component") = false,
+            py::arg("delete_non_largest_component_nodes") = true,
             py::arg("seed") = 0
             );
 

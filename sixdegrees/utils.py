@@ -10,7 +10,7 @@ def to_networkx_graph(N, edges):
 
     return G
 
-def to_sparse_matrix(N, row, col, generator='csr'):
+def to_sparse_matrix(N, row, col, X=None, Y=None, generator='csr'):
 
     if generator == 'csr':
         generator = sprs.csr_matrix

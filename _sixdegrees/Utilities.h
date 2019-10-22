@@ -22,8 +22,8 @@
  * OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
  * IN THE SOFTWARE.
  */
-#ifndef __MHRN_UTILITIES_H__
-#define __MHRN_UTILITIES_H__
+#ifndef __SIXDEGREES_UTILITIES_H__
+#define __SIXDEGREES_UTILITIES_H__
 
 #include <iostream>
 #include <algorithm>
@@ -46,7 +46,7 @@ void add_random_subgraph(
         size_t n,
         double p,
         vector < set < size_t > * > & G,
-        default_random_engine & generator, 
+        mt19937_64 & generator, 
         uniform_real_distribution<double> & distribution,
         size_t start_node = 0
         );
@@ -62,7 +62,7 @@ vector < set < size_t > * > get_components(
         const vector < set < size_t > * > &G
         );
 
-void get_giant_component(
+void get_largest_component(
         vector < set < size_t > * > &G
         );
 
@@ -78,6 +78,21 @@ vector < double > get_kleinberg_pmf(
         );
 
 void randomly_seed_engine(
-        default_random_engine &generator
+        mt19937_64 &generator
+        );
+
+size_t neighbor_set_to_edge_list(
+        vector < set < size_t > * > &G,
+        vector < pair < size_t, size_t > > &edge_list,
+        bool use_largest_component,
+        bool delete_non_largest_component_nodes
+        );
+
+size_t neighbor_set_to_coord_lists(
+        vector < set < size_t > * > &G,
+        vector < size_t > &rows,
+        vector < size_t > &cols,
+        bool use_largest_component,
+        bool delete_non_largest_component_nodes
         );
 #endif

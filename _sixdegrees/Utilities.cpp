@@ -31,7 +31,7 @@ void add_random_subgraph(
         size_t n,
         double p,
         vector < set < size_t > * > & G,
-        default_random_engine & generator, 
+        mt19937_64 & generator, 
         uniform_real_distribution<double> & distribution,
         size_t start_node
         )
@@ -129,8 +129,8 @@ vector < set < size_t > * > get_components_from_edgelist(
     return get_components(G);
 }
 
-// replace the graph in-place with the giant component
-void get_giant_component(
+// replace the graph in-place with the largest component
+void get_largest_component(
         vector < set < size_t > * > &G
         )
 {
@@ -148,7 +148,7 @@ void get_giant_component(
     {
         if ( components[max_comp]->find(node) == components[max_comp]->end() )
         {
-            // if current node not in giant component, empty the neighbor set
+            // if current node not in largest component, empty the neighbor set
             G[node]->clear();
         }
     }
@@ -222,7 +222,7 @@ vector < double > get_kleinberg_pmf(
 }
 
 void randomly_seed_engine(
-        default_random_engine &generator
+        mt19937_64 &generator
         )
 //taken from http://stackoverflow.com/a/29190957/4177832
 {
@@ -233,4 +233,115 @@ void randomly_seed_engine(
 
     seed_seq seed_value { time_seed, clock_seed, pid_seed };
     generator.seed(seed_value);
+}
+
+size_t neighbor_set_to_coord_lists(
+        vector < set < size_t > * > &G,
+        vector < size_t > &rows,
+        vector < size_t > &cols,
+        bool use_largest_component,
+        bool delete_non_largest_component_nodes
+        )
+{
+
+    size_t N = G.size();
+    rows.clear();
+    cols.clear();
+
+    size_t new_N = N;
+
+    if ( use_largest_component && delete_non_largest_component_nodes )
+    {
+        vector < size_t > map_to_new_ids(N);
+        size_t current_id = 0;
+        for(size_t u = 0; u < N; u++)
+            if (G[u]->size()>0)
+            {
+                map_to_new_ids[u] = current_id;
+                current_id++;
+            }
+
+        new_N = current_id;
+
+        for(size_t u = 0; u < N; u++)
+        {
+            for( auto const& v: *G[u] )
+            {
+                rows.push_back(map_to_new_ids[u]);
+                cols.push_back(map_to_new_ids[v]);
+            }
+            delete G[u];
+        }
+    }
+    else
+    {
+        for(size_t u = 0; u < N; u++)
+        {
+            for( auto const& v: *G[u] )
+            {
+                rows.push_back(u);
+                cols.push_back(v);
+            }
+            delete G[u];
+        }
+    }
+    
+    return new_N;
+}
+
+size_t neighbor_set_to_edge_list(
+        vector < set < size_t > * > &G,
+        vector < pair < size_t, size_t > > &edge_list,
+        bool use_largest_component,
+        bool delete_non_largest_component_nodes
+        )
+{
+    size_t N = G.size();
+    edge_list.clear();
+
+    size_t new_N = N;
+
+    if ( use_largest_component && delete_non_largest_component_nodes )
+    {
+        vector < size_t > map_to_new_ids(N);
+        size_t current_id = 0;
+        for(size_t u = 0; u < N; u++)
+            if (G[u]->size()>0)
+            {
+                map_to_new_ids[u] = current_id;
+                current_id++;
+            }
+
+        new_N = current_id;
+
+        for(size_t u = 0; u < N; u++)
+        {
+            size_t u_ = map_to_new_ids[u];
+            for( auto const& v: *G[u] )
+            {
+                size_t v_ = map_to_new_ids[v];
+                if (u_<v_)
+                {
+                    edge_list.push_back( make_pair( u_, v_ ) );
+                }
+            }
+            delete G[u];
+        }
+    }
+    else
+    {
+        for(size_t u = 0; u < N; u++)
+        {
+            for( auto const& v: *G[u] )
+            {
+                if (u<v)
+                {
+                    edge_list.push_back( make_pair(u,v) );
+                }
+            }
+            delete G[u];
+        }
+    }
+    
+    return new_N;
 }

@@ -46,8 +46,8 @@ tuple < size_t, vector <size_t>, vector<size_t> > modified_small_world_coord_lis
         size_t N,
         double k,
         double p,
-        bool use_giant_component,
-        bool delete_non_giant_component_nodes,
+        bool use_largest_component,
+        bool delete_non_largest_component_nodes,
         bool use_fast_algorithm,
         size_t seed
         )
@@ -55,50 +55,15 @@ tuple < size_t, vector <size_t>, vector<size_t> > modified_small_world_coord_lis
     vector < set < size_t > * > G;
 
     if (use_fast_algorithm)
-        G = fast_modified_small_world_neighbor_set(N,k,p,use_giant_component,seed);
+        G = fast_modified_small_world_neighbor_set(N,k,p,use_largest_component,seed);
     else
-        G = modified_small_world_neighbor_set(N,k,p,use_giant_component,seed);
+        G = modified_small_world_neighbor_set(N,k,p,use_largest_component,seed);
 
-    size_t new_N = N;
     vector < size_t > rows;
     vector < size_t > cols;
 
-    if ( use_giant_component && delete_non_giant_component_nodes )
-    {
-        vector < size_t > map_to_new_ids(N);
-        size_t current_id = 0;
-        for(size_t u = 0; u < N; u++)
-            if (G[u]->size()>0)
-            {
-                map_to_new_ids[u] = current_id;
-                current_id++;
-            }
+    size_t new_N = neighbor_set_to_coord_lists(G,rows,cols,use_largest_component,delete_non_largest_component_nodes);
 
-        new_N = current_id;
-
-        for(size_t u = 0; u < N; u++)
-        {
-            for( auto const& v: *G[u] )
-            {
-                rows.push_back(map_to_new_ids[u]);
-                cols.push_back(map_to_new_ids[v]);
-            }
-            delete G[u];
-        }
-    }
-    else
-    {
-        for(size_t u = 0; u < N; u++)
-        {
-            for( auto const& v: *G[u] )
-            {
-                rows.push_back(u);
-                cols.push_back(v);
-            }
-            delete G[u];
-        }
-    }
-    
     return make_tuple(new_N,rows,cols);
 }
     
@@ -106,65 +71,22 @@ pair < size_t, vector < pair < size_t, size_t > > > modified_small_world_edge_li
         size_t N,
         size_t k,
         double p,
-        bool use_giant_component,
-        bool delete_non_giant_component_nodes,
+        bool use_largest_component,
+        bool delete_non_largest_component_nodes,
         bool use_fast_algorithm,
         size_t seed
         )
 {
-    size_t new_N = N;
-
     vector < set < size_t > * > G;
 
     if (use_fast_algorithm)
-        G = fast_modified_small_world_neighbor_set(N,k,p,use_giant_component,seed);
+        G = fast_modified_small_world_neighbor_set(N,k,p,use_largest_component,seed);
     else
-        G = modified_small_world_neighbor_set(N,k,p,use_giant_component,seed);
+        G = modified_small_world_neighbor_set(N,k,p,use_largest_component,seed);
 
     vector < pair < size_t, size_t > > edge_list;
+    size_t new_N = neighbor_set_to_edge_list(G,edge_list,use_largest_component,delete_non_largest_component_nodes);
 
-    if ( use_giant_component && delete_non_giant_component_nodes )
-    {
-        vector < size_t > map_to_new_ids(N);
-        size_t current_id = 0;
-        for(size_t u = 0; u < N; u++)
-            if (G[u]->size()>0)
-            {
-                map_to_new_ids[u] = current_id;
-                current_id++;
-            }
-
-        new_N = current_id;
-
-        for(size_t u = 0; u < N; u++)
-        {
-            size_t u_ = map_to_new_ids[u];
-            for( auto const& v: *G[u] )
-            {
-                size_t v_ = map_to_new_ids[v];
-                if (u_<v_)
-                {
-                    edge_list.push_back( make_pair( u_, v_ ) );
-                }
-            }
-            delete G[u];
-        }
-    }
-    else
-    {
-        for(size_t u = 0; u < N; u++)
-        {
-            for( auto const& v: *G[u] )
-            {
-                if (u<v)
-                {
-                    edge_list.push_back( make_pair(u,v) );
-                }
-            }
-            delete G[u];
-        }
-    }
-    
     return make_pair(new_N,edge_list);
 }
 
@@ -172,7 +94,7 @@ vector < set < size_t > * > modified_small_world_neighbor_set(
         size_t N,
         size_t k,
         double p,
-        bool use_giant_component,
+        bool use_largest_component,
         size_t seed
         )
 {
@@ -192,7 +114,7 @@ vector < set < size_t > * > modified_small_world_neighbor_set(
     size_t max_neighbor = k / 2;
 
     //initialize random generators
-    default_random_engine generator;
+    mt19937_64 generator;
     if (seed == 0)
         randomly_seed_engine(generator);
     else
@@ -225,9 +147,9 @@ vector < set < size_t > * > modified_small_world_neighbor_set(
         }
     }
 
-    if (use_giant_component)
+    if (use_largest_component)
     {
-        get_giant_component(G);
+        get_largest_component(G);
         return G;
     }
     else
@@ -241,7 +163,7 @@ vector < set < size_t > * > fast_modified_small_world_neighbor_set(
         size_t N,
         size_t k,
         double p,
-        bool use_giant_component,
+        bool use_largest_component,
         size_t seed
         )
 {
@@ -261,7 +183,7 @@ vector < set < size_t > * > fast_modified_small_world_neighbor_set(
     size_t max_neighbor = k / 2;
 
     //initialize random generators
-    default_random_engine generator;
+    mt19937_64 generator;
     if (seed == 0)
         randomly_seed_engine(generator);
     else
@@ -309,9 +231,9 @@ vector < set < size_t > * > fast_modified_small_world_neighbor_set(
 
     }
 
-    if (use_giant_component)
+    if (use_largest_component)
     {
-        get_giant_component(G);
+        get_largest_component(G);
         return G;
     }
     else

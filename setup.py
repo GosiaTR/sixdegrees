@@ -32,6 +32,7 @@ ext_modules = [
             '_sixdegrees/modified_small_world.cpp', 
             '_sixdegrees/random_geometric_small_world.cpp', 
             '_sixdegrees/random_geometric_kleinberg.cpp', 
+            '_sixdegrees/twoD_random_geometric_kleinberg.cpp', 
             '_sixdegrees/_sixdegrees.cpp', 
         ],
         include_dirs=[
