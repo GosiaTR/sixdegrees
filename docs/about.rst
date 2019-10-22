@@ -19,7 +19,7 @@ self-similar modular hierarchical network with similar properties:
 
 .. code:: python
 
-   import six_degrees
+   import sixdegrees
 
    B = number_of_submodules_per_modules = 10
    L = number_of_hierarchy_layers = 3
