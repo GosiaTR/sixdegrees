@@ -22,7 +22,6 @@ def modular_hierarchical_network(B,
 
     xi = B**mu
 
-    X = np.random.rand() * N
     _N, _edges = _modular_hierarchical_network(
                                     B,
                                     L,
