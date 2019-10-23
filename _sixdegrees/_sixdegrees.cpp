@@ -44,8 +44,7 @@
 #include "random_geometric_small_world.h"
 #include "random_geometric_kleinberg.h"
 #include "twoD_random_geometric_kleinberg.h"
-//#include "ResultClasses.h"
-//#include "test.h"
+#include "find_first_random_edge.h"
 
 using namespace std;
 namespace py = pybind11;
@@ -279,6 +278,10 @@ PYBIND11_MODULE(_sixdegrees, m) {
             py::arg("N"),
             py::arg("k"),
             py::arg("mu")
+        );
+
+    m.def("find_first_random_edge", &find_first_random_edge, "Given a ``numpy.ndarray`` of probabilities in descending order, find the first entry `j` for which :math:`\\sum_i^j(p_i-1)<0`.",
+            py::arg("probabilities")
         );
 
 }

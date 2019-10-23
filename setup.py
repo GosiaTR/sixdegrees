@@ -25,6 +25,7 @@ ext_modules = [
     Extension(
         '_sixdegrees',
         [ 
+            '_sixdegrees/_sixdegrees.cpp', 
             '_sixdegrees/Utilities.cpp', 
             '_sixdegrees/ssmh.cpp', 
             '_sixdegrees/kleinberg.cpp', 
@@ -33,7 +34,7 @@ ext_modules = [
             '_sixdegrees/random_geometric_small_world.cpp', 
             '_sixdegrees/random_geometric_kleinberg.cpp', 
             '_sixdegrees/twoD_random_geometric_kleinberg.cpp', 
-            '_sixdegrees/_sixdegrees.cpp', 
+            '_sixdegrees/find_first_random_edge.cpp', 
         ],
         include_dirs=[
             get_pybind_include(),
