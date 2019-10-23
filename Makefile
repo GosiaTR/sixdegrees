@@ -20,7 +20,7 @@ python:
 
 grootinstall:
 	. /opt/rh/devtoolset-2/enable
-	/opt/python36/bin/pip3.7 install --user ../sixdegrees
+	/opt/python36/bin/pip3.6 install --user ../sixdegrees
 
 groot:
 	git fetch
