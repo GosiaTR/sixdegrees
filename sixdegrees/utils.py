@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+This module provides convenient functions to
+convert network data to more convenient
+network objects.
+"""
+
 import numpy as np
 import networkx as nx
 import scipy.sparse as sprs

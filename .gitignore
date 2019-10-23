@@ -8,12 +8,21 @@ a.out
 *.npy
 *.mexmaci64
 *.m~
-*.swp
+*.pickle
 *.pyc
-
-*__pycache__*
+*.swp
+*.pdf
 
 /*.egg-info/
 /build/
 /tmp/
 /dist/
+/tests/
+
+/jupyter_notebooks/.ipynb_checkpoints/
+
+/py_only_docs/
+/docs/_build/
+
+/.vscode/
+/_vscode/

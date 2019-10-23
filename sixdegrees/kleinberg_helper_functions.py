@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+This module provides functions to compute
+the minimum connection radius and connection
+probability prefactor for the 2D-versions
+of the modified random geometric Kleinberg 
+small-world network model.
+"""
+
 import numpy as np
 from scipy.spatial.distance import pdist
 from scipy.integrate import quad

@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+This module provides convenient wrapper functions for
+the C++-functions sampling from all random geometric
+small-world network models.
+"""
+
 import numpy as np
 from _sixdegrees import (
         _random_geometric_small_world_network_coord_lists,

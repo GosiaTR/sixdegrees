@@ -1,7 +1,15 @@
+# -*- coding: utf-8 -*-
+"""
+This module provides functions to sample 
+from the generalized small-world models
+where only node-pair distances have to 
+be provided.
+"""
+
 import numpy as np
 from _sixdegrees import find_first_random_edge
 
-def is_sorted(arr):
+def _is_sorted(arr):
     """ Returns `True` if the array is sorted ascendingly and `False if it isn't."""
     i = 0     
     while (i+1 < arr.shape[0]):
@@ -143,7 +151,7 @@ def generalized_categorical_kleinberg_network(
     assert(len(node_pair_categories) == len(all_node_pairs))
 
     # check if probabilities are sorted
-    assert(is_sorted(category_probabilities[::-1]))
+    assert(_is_sorted(category_probabilities[::-1]))
 
     # get the node pair counts of the categories
     unique, m = np.unique(node_pair_categories, return_counts=True)

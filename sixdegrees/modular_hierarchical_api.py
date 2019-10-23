@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+This module provides convenient wrapper functions for
+the C++-functions sampling from the modular-hierarchical
+small-world network model.
+"""
+
 import numpy as np
 from _sixdegrees import (
         _modular_hierarchical_network_coord_lists,

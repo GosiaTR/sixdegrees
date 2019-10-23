@@ -1,6 +1,6 @@
-.. image:: img/logo.png
+.. image:: img/new_logo_wide.png
 
-sixdegrees
+SIXDEGREES
 ==========
 
 .. toctree::

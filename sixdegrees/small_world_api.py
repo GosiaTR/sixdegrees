@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+This module provides convenient wrapper functions for
+the C++-functions sampling from the modified and original
+small-world network models.
+"""
+
 import numpy as np
 from _sixdegrees import (
         _modified_small_world_network_coord_lists,
