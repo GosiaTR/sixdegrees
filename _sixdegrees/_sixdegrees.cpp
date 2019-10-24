@@ -51,7 +51,7 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(_sixdegrees, m) {
     m.doc() = R"pydoc(
-        Generate generalized small-world networks, including self-similar modular hierarchical and modified Kleinberg networks.";
+        Generate generalized small-world networks, including self-similar modular hierarchical and modified Kleinberg networks.
 
         .. currentmodule:: _sixdegrees
 
