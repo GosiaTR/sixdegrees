@@ -1,4 +1,4 @@
-.. image:: img/new_logo_wide.png
+.. image:: img/logo_wide.png
 
 SIXDEGREES
 ==========
@@ -10,10 +10,9 @@ SIXDEGREES
 
 .. toctree::
    :maxdepth: 2
-   :caption: FOO
+   :caption: Cookbook
 
-   visualizations/drawing
-   visualizations/interactive
+   cookbook/modular_hierarchical.rst
 
 .. toctree::
    :maxdepth: 2

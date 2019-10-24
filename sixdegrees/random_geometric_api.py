@@ -63,7 +63,8 @@ def twoD_random_geometric_kleinberg_network(
     X = np.random.rand(N)
     Y = np.random.rand(N)
 
-    kappa = 2*(mu-1)
+    #kappa = 2*(mu-1)
+    kappa = (mu-1)
 
     C, rmin = get_distance_connection_probability_parameters(
                                                    N, 
@@ -209,7 +210,8 @@ def twoD_random_geometric_kleinberg_network_coord_lists(
     X = np.random.rand(N)
     Y = np.random.rand(N)
 
-    kappa = 2*(mu-1)
+    #kappa = 2*(mu-1)
+    kappa = (mu-1)
 
     C, rmin = get_distance_connection_probability_parameters(
                                                    N, 
