@@ -19,13 +19,20 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="author" title="About these documents" href="#" />
@@ -33,21 +40,16 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Nested Communities" href="cookbook/modular_hierarchical.html" />
     <link rel="prev" title="SIXDEGREES" href="index.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -185,7 +187,7 @@ read <a class="reference external" href="https://medium.com/&#64;duncanjwatts/ho
 <h2>Quick example<a class="headerlink" href="#quick-example" title="Permalink to this headline">¶</a></h2>
 <p>Generate a small-world network, a 1D-Kleinberg-network, and a
 self-similar modular hierarchical network with similar properties:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sixdegrees</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sixdegrees</span>
 
 <span class="n">B</span> <span class="o">=</span> <span class="n">number_of_submodules_per_modules</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">L</span> <span class="o">=</span> <span class="n">number_of_hierarchy_layers</span> <span class="o">=</span> <span class="mi">3</span>
@@ -203,8 +205,8 @@ self-similar modular hierarchical network with similar properties:</p>
 <div class="section" id="install">
 <h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
 <p>If you get compiling errors, make sure that <a class="reference external" href="https://github.com/pybind/pybind11">pybind11</a> is installed.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">benmaier</span><span class="o">/</span><span class="n">sixdegrees</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="o">./</span><span class="n">sixdegrees</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/benmaier/sixdegrees
+pip install ./sixdegrees
 </pre></div>
 </div>
 <p>Note that a C++11-compiler has to be installed on the system before
@@ -223,7 +225,7 @@ installing <code class="docutils literal notranslate"><span class="pre">sixdegre
         <a href="cookbook/modular_hierarchical.html" class="btn btn-neutral float-right" title="Nested Communities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="SIXDEGREES" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="SIXDEGREES" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -232,7 +234,7 @@ installing <code class="docutils literal notranslate"><span class="pre">sixdegre
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Benjamin F. Maier.
+        &copy; Copyright 2019, Benjamin F. Maier
 
     </p>
   </div>
@@ -249,32 +251,16 @@ installing <code class="docutils literal notranslate"><span class="pre">sixdegre
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.3.1',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

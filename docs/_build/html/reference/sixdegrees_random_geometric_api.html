@@ -19,13 +19,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="author" title="About these documents" href="../about.html" />
@@ -33,21 +40,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Kleinberg Helper Functions" href="sixdegrees_kleinberg_helpers.html" />
     <link rel="prev" title="Modular-Hierarchical API" href="sixdegrees_modular_hierarchical_api.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -172,34 +174,34 @@
 <p>This module provides convenient wrapper functions for
 the C++-functions sampling from all random geometric
 small-world network models.</p>
-<dl class="function">
+<dl class="py function">
 <dt id="sixdegrees.random_geometric_api.random_geometric_kleinberg_network">
-<code class="descclassname">sixdegrees.random_geometric_api.</code><code class="descname">random_geometric_kleinberg_network</code><span class="sig-paren">(</span><em>N</em>, <em>k</em>, <em>mu</em>, <em>use_largest_component=False</em>, <em>delete_non_largest_component_nodes=True</em>, <em>seed=0</em>, <em>return_positions=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/random_geometric_api.html#random_geometric_kleinberg_network"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.random_geometric_api.random_geometric_kleinberg_network" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">sixdegrees.random_geometric_api.</code><code class="sig-name descname">random_geometric_kleinberg_network</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">N</span></em>, <em class="sig-param"><span class="n">k</span></em>, <em class="sig-param"><span class="n">mu</span></em>, <em class="sig-param"><span class="n">use_largest_component</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">delete_non_largest_component_nodes</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">return_positions</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/random_geometric_api.html#random_geometric_kleinberg_network"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.random_geometric_api.random_geometric_kleinberg_network" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="sixdegrees.random_geometric_api.random_geometric_kleinberg_network_coord_lists">
-<code class="descclassname">sixdegrees.random_geometric_api.</code><code class="descname">random_geometric_kleinberg_network_coord_lists</code><span class="sig-paren">(</span><em>N</em>, <em>k</em>, <em>mu</em>, <em>use_largest_component=False</em>, <em>delete_non_largest_component_nodes=True</em>, <em>seed=0</em>, <em>return_positions=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/random_geometric_api.html#random_geometric_kleinberg_network_coord_lists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.random_geometric_api.random_geometric_kleinberg_network_coord_lists" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">sixdegrees.random_geometric_api.</code><code class="sig-name descname">random_geometric_kleinberg_network_coord_lists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">N</span></em>, <em class="sig-param"><span class="n">k</span></em>, <em class="sig-param"><span class="n">mu</span></em>, <em class="sig-param"><span class="n">use_largest_component</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">delete_non_largest_component_nodes</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">return_positions</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/random_geometric_api.html#random_geometric_kleinberg_network_coord_lists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.random_geometric_api.random_geometric_kleinberg_network_coord_lists" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="sixdegrees.random_geometric_api.random_geometric_small_world_network">
-<code class="descclassname">sixdegrees.random_geometric_api.</code><code class="descname">random_geometric_small_world_network</code><span class="sig-paren">(</span><em>N</em>, <em>k</em>, <em>mu</em>, <em>use_largest_component=False</em>, <em>delete_non_largest_component_nodes=True</em>, <em>seed=0</em>, <em>return_positions=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/random_geometric_api.html#random_geometric_small_world_network"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.random_geometric_api.random_geometric_small_world_network" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">sixdegrees.random_geometric_api.</code><code class="sig-name descname">random_geometric_small_world_network</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">N</span></em>, <em class="sig-param"><span class="n">k</span></em>, <em class="sig-param"><span class="n">mu</span></em>, <em class="sig-param"><span class="n">use_largest_component</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">delete_non_largest_component_nodes</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">return_positions</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/random_geometric_api.html#random_geometric_small_world_network"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.random_geometric_api.random_geometric_small_world_network" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="sixdegrees.random_geometric_api.random_geometric_small_world_network_coord_lists">
-<code class="descclassname">sixdegrees.random_geometric_api.</code><code class="descname">random_geometric_small_world_network_coord_lists</code><span class="sig-paren">(</span><em>N</em>, <em>k</em>, <em>mu</em>, <em>use_largest_component=False</em>, <em>delete_non_largest_component_nodes=True</em>, <em>seed=0</em>, <em>return_positions=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/random_geometric_api.html#random_geometric_small_world_network_coord_lists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.random_geometric_api.random_geometric_small_world_network_coord_lists" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">sixdegrees.random_geometric_api.</code><code class="sig-name descname">random_geometric_small_world_network_coord_lists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">N</span></em>, <em class="sig-param"><span class="n">k</span></em>, <em class="sig-param"><span class="n">mu</span></em>, <em class="sig-param"><span class="n">use_largest_component</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">delete_non_largest_component_nodes</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">return_positions</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/random_geometric_api.html#random_geometric_small_world_network_coord_lists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.random_geometric_api.random_geometric_small_world_network_coord_lists" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="sixdegrees.random_geometric_api.twoD_random_geometric_kleinberg_network">
-<code class="descclassname">sixdegrees.random_geometric_api.</code><code class="descname">twoD_random_geometric_kleinberg_network</code><span class="sig-paren">(</span><em>N</em>, <em>k</em>, <em>mu</em>, <em>periodic_boundary_conditions=True</em>, <em>use_largest_component=False</em>, <em>delete_non_largest_component_nodes=True</em>, <em>seed=0</em>, <em>epsilon=1e-09</em>, <em>return_positions=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/random_geometric_api.html#twoD_random_geometric_kleinberg_network"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.random_geometric_api.twoD_random_geometric_kleinberg_network" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">sixdegrees.random_geometric_api.</code><code class="sig-name descname">twoD_random_geometric_kleinberg_network</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">N</span></em>, <em class="sig-param"><span class="n">k</span></em>, <em class="sig-param"><span class="n">mu</span></em>, <em class="sig-param"><span class="n">periodic_boundary_conditions</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">use_largest_component</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">delete_non_largest_component_nodes</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">epsilon</span><span class="o">=</span><span class="default_value">1e-09</span></em>, <em class="sig-param"><span class="n">return_positions</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">use_continuous_connection_probability</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">X</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">Y</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/random_geometric_api.html#twoD_random_geometric_kleinberg_network"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.random_geometric_api.twoD_random_geometric_kleinberg_network" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="sixdegrees.random_geometric_api.twoD_random_geometric_kleinberg_network_coord_lists">
-<code class="descclassname">sixdegrees.random_geometric_api.</code><code class="descname">twoD_random_geometric_kleinberg_network_coord_lists</code><span class="sig-paren">(</span><em>N</em>, <em>k</em>, <em>mu</em>, <em>periodic_boundary_conditions=True</em>, <em>use_largest_component=False</em>, <em>delete_non_largest_component_nodes=True</em>, <em>seed=0</em>, <em>epsilon=1e-09</em>, <em>return_positions=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/random_geometric_api.html#twoD_random_geometric_kleinberg_network_coord_lists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.random_geometric_api.twoD_random_geometric_kleinberg_network_coord_lists" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">sixdegrees.random_geometric_api.</code><code class="sig-name descname">twoD_random_geometric_kleinberg_network_coord_lists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">N</span></em>, <em class="sig-param"><span class="n">k</span></em>, <em class="sig-param"><span class="n">mu</span></em>, <em class="sig-param"><span class="n">periodic_boundary_conditions</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">use_largest_component</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">delete_non_largest_component_nodes</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">epsilon</span><span class="o">=</span><span class="default_value">1e-09</span></em>, <em class="sig-param"><span class="n">return_positions</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">use_continuous_connection_probability</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">X</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">Y</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/random_geometric_api.html#twoD_random_geometric_kleinberg_network_coord_lists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.random_geometric_api.twoD_random_geometric_kleinberg_network_coord_lists" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -215,7 +217,7 @@ small-world network models.</p>
         <a href="sixdegrees_kleinberg_helpers.html" class="btn btn-neutral float-right" title="Kleinberg Helper Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sixdegrees_modular_hierarchical_api.html" class="btn btn-neutral" title="Modular-Hierarchical API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sixdegrees_modular_hierarchical_api.html" class="btn btn-neutral float-left" title="Modular-Hierarchical API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -224,7 +226,7 @@ small-world network models.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Benjamin F. Maier.
+        &copy; Copyright 2019, Benjamin F. Maier
 
     </p>
   </div>
@@ -241,32 +243,16 @@ small-world network models.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.3.1',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
