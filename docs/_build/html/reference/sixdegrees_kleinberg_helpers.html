@@ -19,13 +19,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="author" title="About these documents" href="../about.html" />
@@ -33,21 +40,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Utilities" href="sixdegrees_utils.html" />
     <link rel="prev" title="Random-Geometric API" href="sixdegrees_random_geometric_api.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -174,19 +176,24 @@ the minimum connection radius and connection
 probability prefactor for the 2D-versions
 of the modified random geometric Kleinberg
 small-world network model.</p>
-<dl class="function">
+<dl class="py function">
 <dt id="sixdegrees.kleinberg_helper_functions.f">
-<code class="descclassname">sixdegrees.kleinberg_helper_functions.</code><code class="descname">f</code><span class="sig-paren">(</span><em>r</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/kleinberg_helper_functions.html#f"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.kleinberg_helper_functions.f" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">sixdegrees.kleinberg_helper_functions.</code><code class="sig-name descname">f</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">r</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/kleinberg_helper_functions.html#f"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.kleinberg_helper_functions.f" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="sixdegrees.kleinberg_helper_functions.f_PBC">
-<code class="descclassname">sixdegrees.kleinberg_helper_functions.</code><code class="descname">f_PBC</code><span class="sig-paren">(</span><em>r</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/kleinberg_helper_functions.html#f_PBC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.kleinberg_helper_functions.f_PBC" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">sixdegrees.kleinberg_helper_functions.</code><code class="sig-name descname">f_PBC</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">r</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/kleinberg_helper_functions.html#f_PBC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.kleinberg_helper_functions.f_PBC" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
+<dt id="sixdegrees.kleinberg_helper_functions.get_continuous_distance_connection_probability_parameters">
+<code class="sig-prename descclassname">sixdegrees.kleinberg_helper_functions.</code><code class="sig-name descname">get_continuous_distance_connection_probability_parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">N</span></em>, <em class="sig-param"><span class="n">k</span></em>, <em class="sig-param"><span class="n">kappa</span></em>, <em class="sig-param"><span class="n">epsilon</span><span class="o">=</span><span class="default_value">1e-09</span></em>, <em class="sig-param"><span class="n">use_periodic_boundary_conditions</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/kleinberg_helper_functions.html#get_continuous_distance_connection_probability_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.kleinberg_helper_functions.get_continuous_distance_connection_probability_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt id="sixdegrees.kleinberg_helper_functions.get_distance_connection_probability_parameters">
-<code class="descclassname">sixdegrees.kleinberg_helper_functions.</code><code class="descname">get_distance_connection_probability_parameters</code><span class="sig-paren">(</span><em>N</em>, <em>k</em>, <em>kappa</em>, <em>epsilon=1e-09</em>, <em>use_periodic_boundary_conditions=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/kleinberg_helper_functions.html#get_distance_connection_probability_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.kleinberg_helper_functions.get_distance_connection_probability_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">sixdegrees.kleinberg_helper_functions.</code><code class="sig-name descname">get_distance_connection_probability_parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">N</span></em>, <em class="sig-param"><span class="n">k</span></em>, <em class="sig-param"><span class="n">kappa</span></em>, <em class="sig-param"><span class="n">epsilon</span><span class="o">=</span><span class="default_value">1e-09</span></em>, <em class="sig-param"><span class="n">use_periodic_boundary_conditions</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sixdegrees/kleinberg_helper_functions.html#get_distance_connection_probability_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sixdegrees.kleinberg_helper_functions.get_distance_connection_probability_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -202,7 +209,7 @@ small-world network model.</p>
         <a href="sixdegrees_utils.html" class="btn btn-neutral float-right" title="Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sixdegrees_random_geometric_api.html" class="btn btn-neutral" title="Random-Geometric API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sixdegrees_random_geometric_api.html" class="btn btn-neutral float-left" title="Random-Geometric API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -211,7 +218,7 @@ small-world network model.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Benjamin F. Maier.
+        &copy; Copyright 2019, Benjamin F. Maier
 
     </p>
   </div>
@@ -228,32 +235,16 @@ small-world network model.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.3.1',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

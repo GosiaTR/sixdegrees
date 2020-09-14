@@ -15,7 +15,10 @@ from _sixdegrees import (
         _twoD_random_geometric_kleinberg_network,
     )
 
-from sixdegrees.kleinberg_helper_functions import get_distance_connection_probability_parameters
+from sixdegrees.kleinberg_helper_functions import (
+        get_distance_connection_probability_parameters,
+        get_continuous_distance_connection_probability_parameters,
+        )
 
 def random_geometric_kleinberg_network(N,
                                        k,
@@ -58,20 +61,34 @@ def twoD_random_geometric_kleinberg_network(
                                        seed=0,
                                        epsilon=1e-9,
                                        return_positions=False,
+                                       use_continuous_connection_probability=True,
+                                       X=None,
+                                       Y=None,
                                        ):
 
-    X = np.random.rand(N)
-    Y = np.random.rand(N)
+    if X is None:
+        X = np.random.rand(N)
+    if Y is None:
+        Y = np.random.rand(N)
 
     kappa = 2*(mu-1)
 
-    C, rmin = get_distance_connection_probability_parameters(
-                                                   N, 
-                                                   k,
-                                                   kappa, 
-                                                   epsilon=epsilon, 
-                                                   use_periodic_boundary_conditions=periodic_boundary_conditions,
-                                                   )
+    if not use_continuous_connection_probability:
+        C, rmin = get_distance_connection_probability_parameters(
+                                                       N, 
+                                                       k,
+                                                       kappa, 
+                                                       epsilon=epsilon, 
+                                                       use_periodic_boundary_conditions=periodic_boundary_conditions,
+                                                       )
+    else:
+        C, rmin = get_continuous_distance_connection_probability_parameters(
+                                                       N, 
+                                                       k,
+                                                       kappa, 
+                                                       epsilon=epsilon, 
+                                                       use_periodic_boundary_conditions=periodic_boundary_conditions,
+                                                       )
 
     _N, _edges = _twoD_random_geometric_kleinberg_network(
                                     N,
@@ -204,20 +221,34 @@ def twoD_random_geometric_kleinberg_network_coord_lists(
                                        seed=0,
                                        epsilon=1e-9,
                                        return_positions=False,
+                                       use_continuous_connection_probability=True,
+                                       X = None,
+                                       Y = None,
                                        ):
 
-    X = np.random.rand(N)
-    Y = np.random.rand(N)
+    if X is None:
+        X = np.random.rand(N)
+    if Y is None:
+        Y = np.random.rand(N)
 
     kappa = 2*(mu-1)
 
-    C, rmin = get_distance_connection_probability_parameters(
-                                                   N, 
-                                                   k,
-                                                   kappa, 
-                                                   epsilon=epsilon, 
-                                                   use_periodic_boundary_conditions=periodic_boundary_conditions,
-                                                   )
+    if not use_continuous_connection_probability:
+        C, rmin = get_distance_connection_probability_parameters(
+                                                       N, 
+                                                       k,
+                                                       kappa, 
+                                                       epsilon=epsilon, 
+                                                       use_periodic_boundary_conditions=periodic_boundary_conditions,
+                                                       )
+    else:
+        C, rmin = get_continuous_distance_connection_probability_parameters(
+                                                       N, 
+                                                       k,
+                                                       kappa, 
+                                                       epsilon=epsilon, 
+                                                       use_periodic_boundary_conditions=periodic_boundary_conditions,
+                                                       )
 
     _N, row, col = _twoD_random_geometric_kleinberg_network_coord_lists(
                                     N,
@@ -237,3 +268,35 @@ def twoD_random_geometric_kleinberg_network_coord_lists(
     else:
         return _N, row, col
 
+
+if __name__=="__main__":
+    import matplotlib.pyplot as pl
+    N = 401
+    k = 30
+    mu = -1
+    kappa = 2*(mu-1)
+    _, edges = twoD_random_geometric_kleinberg_network(N,k,mu,periodic_boundary_conditions=False,use_continuous_connection_probability=True)
+
+    print(2*len(edges)/N, k)
+
+    C, rmin = get_continuous_distance_connection_probability_parameters(
+                                                   N, 
+                                                   k,
+                                                   2*(mu-1), 
+                                                   epsilon=1e-9, 
+                                                   use_periodic_boundary_conditions=False
+                                                   )
+
+    def P(r, C, rmin, kappa):
+        if r < rmin:
+            return 1
+        else:
+            return C * r**kappa
+    r = np.linspace(0,1,10000)
+    Ps = [P(_r,C,rmin, kappa) for _r in r]
+    pl.plot(r, Ps)
+    #pl.xscale('log')
+    #pl.yscale('log')
+
+    pl.show()
+    #print(edges)

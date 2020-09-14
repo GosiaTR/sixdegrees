@@ -19,13 +19,20 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="author" title="About these documents" href="../../about.html" />
@@ -33,21 +40,16 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="_sixdegrees._twoD_random_geometric_kleinberg_network_coord_lists" href="_sixdegrees._twoD_random_geometric_kleinberg_network_coord_lists.html" />
     <link rel="prev" title="_sixdegrees._random_geometric_kleinberg_network_coord_lists" href="_sixdegrees._random_geometric_kleinberg_network_coord_lists.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -186,9 +188,9 @@
             
   <div class="section" id="sixdegrees-twod-random-geometric-kleinberg-network">
 <h1>_sixdegrees._twoD_random_geometric_kleinberg_network<a class="headerlink" href="#sixdegrees-twod-random-geometric-kleinberg-network" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="_sixdegrees._twoD_random_geometric_kleinberg_network">
-<code class="descclassname">_sixdegrees.</code><code class="descname">_twoD_random_geometric_kleinberg_network</code><span class="sig-paren">(</span><em>N: int, prefactor: float, rmin: float, kappa: float, X: List[float], Y: List[float], periodic_boundary_conditions: bool = True, use_largest_component: bool = False, delete_non_largest_component_nodes: bool = True, seed: int = 0</em><span class="sig-paren">)</span> &#x2192; Tuple[int, List[Tuple[int, int]]]<a class="headerlink" href="#_sixdegrees._twoD_random_geometric_kleinberg_network" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt id="sixdegrees._twoD_random_geometric_kleinberg_network">
+<span id="_sixdegrees._twoD_random_geometric_kleinberg_network"></span><code class="sig-prename descclassname">_sixdegrees.</code><code class="sig-name descname">_twoD_random_geometric_kleinberg_network</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">N</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a></span></em>, <em class="sig-param"><span class="n">prefactor</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)">float</a></span></em>, <em class="sig-param"><span class="n">rmin</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)">float</a></span></em>, <em class="sig-param"><span class="n">kappa</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)">float</a></span></em>, <em class="sig-param"><span class="n">X</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)">float</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">Y</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)">float</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">periodic_boundary_conditions</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">use_largest_component</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">delete_non_largest_component_nodes</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">seed</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a></span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a><span class="p">, </span>List<span class="p">[</span>Tuple<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a><span class="p">, </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)">int</a><span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="headerlink" href="#sixdegrees._twoD_random_geometric_kleinberg_network" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a 2d Kleinberg network (with or without periodic boundary conditions) as an edge list, where node positions are uniformly distributed in the real-valued unit square [0,1]^2. You need to provide two lists X, Y of N iid random numbers drawn uniformly from [0,1]. Connection probability of two nodes u and v is ~ d(u,v)^kappa where d(u,v) is the pair’s Euclidean distance.</p>
 </dd></dl>
 
@@ -205,7 +207,7 @@
         <a href="_sixdegrees._twoD_random_geometric_kleinberg_network_coord_lists.html" class="btn btn-neutral float-right" title="_sixdegrees._twoD_random_geometric_kleinberg_network_coord_lists" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="_sixdegrees._random_geometric_kleinberg_network_coord_lists.html" class="btn btn-neutral" title="_sixdegrees._random_geometric_kleinberg_network_coord_lists" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="_sixdegrees._random_geometric_kleinberg_network_coord_lists.html" class="btn btn-neutral float-left" title="_sixdegrees._random_geometric_kleinberg_network_coord_lists" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -214,7 +216,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Benjamin F. Maier.
+        &copy; Copyright 2019, Benjamin F. Maier
 
     </p>
   </div>
@@ -231,32 +233,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'0.3.1',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
