@@ -27,6 +27,43 @@ def generalized_kleinberg_network(
                             kappa = None,
                             seed = None,
                             ):
+    r"""
+    Generate a Kleinberg network according to the generalized
+    construction algorithm where a node pair of distance :math:`r`
+    is connected with probability :math:`\propto r^\kappa`.
+    Note that :math:`\kappa \leq 0` with 
+    `:math:`\kappa = 0` constructing an ER graph.
+
+    Either provide all node pair distances *and* :math:`kappa` or 
+    the node pair connection probabilities.
+
+    Parameters
+    ==========
+    N : int
+        Number of nodes
+    k : float
+        Mean degree
+    all_node_pairs : list of tuple of int
+        Provide a list of all node pairs
+    node_pair_distances : list of float, default = None
+        The `i`-th entry of this list gives the distance
+        of the `i`-th node pair in ``all_node_pairs``.
+    node_pair_probabilities : list of float, default = None
+        The `i`-th entry of this list gives the distance
+        of the `i`-th node pair in ``all_node_pairs``.
+        Ignored if ``kappa`` is set.
+    kappa : float, default = None
+        Power-law exponent with which the distance-dependent
+        connection probability decays.
+    seed : int, default = None
+        How to initiate the RNG
+
+    Returns
+    =======
+    edges : list of tuple of int
+        A list of node index pairs that constitute the edges of the
+        generated network.
+    """
 
     mmax = (N*(N-1))//2
     assert(all_node_pairs.shape == (mmax, 2))
@@ -92,6 +129,50 @@ def generalized_small_world_network(
                             node_pair_distances,
                             seed = None,
                             ):
+    r"""
+    Generate a small-world network according to the generalized
+    construction algorithm where a node pair of distance :math:`r`
+    is connected with probability 
+
+    .. math::
+
+        p(r) = \begin{cases}
+                    p_S & r \leq  r_c \\
+                    p_L & r > r_c 
+               \end{cases}
+
+    where
+
+    .. math::
+
+        p_S = \left(1+ \beta * (N-1-k)/k\right)^{-1}\\
+        p_L = \beta p_S.
+
+    Note that :math:`\beta = 1` results in an ER graph.
+
+    Parameters
+    ==========
+    N : int
+        Number of nodes
+    k : float
+        Mean degree
+    beta : float
+        Trade-off between short-range and long-range
+        connection probability.
+    all_node_pairs : list of tuple of int
+        Provide a list of all node pairs
+    node_pair_distances : list of float
+        The `i`-th entry of this list gives the distance
+        of the `i`-th node pair in ``all_node_pairs``.
+    seed : int, default = None
+        How to initiate the RNG
+
+    Returns
+    =======
+    edges : list of tuple of int
+        A list of node index pairs that constitute the edges of the
+        generated network.
+    """
 
     assert(N>1)
     mmax = (N*(N-1))//2
@@ -143,6 +224,45 @@ def generalized_categorical_kleinberg_network(
                             seed = None,
                             ):
 
+    r"""
+    Generate a Kleinberg network according to the generalized
+    construction algorithm where a node pair of categorical (integer)
+    distance :math:`m`
+    is connected with a previously defined probability.
+
+    E.g. for self-similar modular hierarchical networks, 
+    the categorical distance of two nodes is given by their distance
+    to their lowest common ancestor in the hierarchy tree.
+
+    See App. B.2.2 (page 234) of my dissertation:
+    https://edoc.hu-berlin.de/handle/18452/21788
+
+    This function basically does the "redistribution of overflow
+    connection probability to nearer neighbors" part for you.
+
+    Parameters
+    ==========
+    N : int
+        Number of nodes
+    k : float
+        Mean degree
+    all_node_pairs : list of tuple of int
+        Provide a list of all node pairs
+    node_pair_categories : list of int, default = None
+        The `i`-th entry of this list gives the categorical distance
+        of the `i`-th node pair in ``all_node_pairs``.
+    category_probabilities : list of float
+        The `i`-th entry of this list gives the connection probability
+        of nodes that are of caterogical distance `i`
+    seed : int, default = None
+        How to initiate the RNG
+
+    Returns
+    =======
+    edges : list of tuple of int
+        A list of node index pairs that constitute the edges of the
+        generated network.
+    """
 
     assert(N>1)
     mmax = (N*(N-1))//2
