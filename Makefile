@@ -16,7 +16,7 @@ pyclean:
 	-rm -rf ./build/
 
 python:
-	pip install -e ../sixdegrees --no-binary :all:
+	pip install -e ../sixdegrees
 
 grootinstall:
 	. /opt/rh/devtoolset-2/enable

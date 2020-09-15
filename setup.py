@@ -32,7 +32,6 @@ ext_modules = [
             '_sixdegrees/original_small_world.cpp', 
             '_sixdegrees/modified_small_world.cpp', 
             '_sixdegrees/random_geometric_small_world.cpp', 
-            '_sixdegrees/random_geometric_kleinberg.cpp', 
             '_sixdegrees/twoD_random_geometric_kleinberg.cpp', 
             '_sixdegrees/find_first_random_edge.cpp', 
         ],

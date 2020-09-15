@@ -42,7 +42,6 @@
 #include "modified_small_world.h"
 #include "original_small_world.h"
 #include "random_geometric_small_world.h"
-#include "random_geometric_kleinberg.h"
 #include "twoD_random_geometric_kleinberg.h"
 #include "find_first_random_edge.h"
 
@@ -93,8 +92,6 @@ PYBIND11_MODULE(_sixdegrees, m) {
 
             _random_geometric_small_world_network
             _random_geometric_small_world_network_coord_lists
-            _random_geometric_kleinberg_network
-            _random_geometric_kleinberg_network_coord_lists
             _twoD_random_geometric_kleinberg_network
             _twoD_random_geometric_kleinberg_network_coord_lists
 
@@ -147,30 +144,6 @@ PYBIND11_MODULE(_sixdegrees, m) {
             py::arg("use_largest_component") = false,
             py::arg("delete_non_largest_component_nodes") = true,
             py::arg("seed") = 0
-            );
-
-    m.def("_random_geometric_kleinberg_network", &random_geometric_kleinberg_edge_list, R"pydoc(Returns a 1d Kleinberg network (with periodic boundary conditions) as edge list where node positions are uniformly distributed in the real-valued interval [0,N]. Connection probability of two nodes u and v is ~ d(u,v)^(mu-1) where d(u,v) is the pair's distance in periodic boundary conditions. If you want to map from an ssmh, bear in mind that N=B^L and mu=log(xi)/log(B). DO NOT USE WITH `use_theory_algorithm = True`.)pydoc",
-            py::arg("N"),
-            py::arg("k"),
-            py::arg("mu"),
-            py::arg("X"),
-            py::arg("use_largest_component") = false,
-            py::arg("delete_non_largest_component_nodes") = true,
-            py::arg("use_theory_algorithm") = false,
-            py::arg("seed") = 0,
-            py::arg("epsilon") = 0.0
-            );
-
-    m.def("_random_geometric_kleinberg_network_coord_lists", &random_geometric_kleinberg_coord_lists, R"pydoc(Returns a 1d Kleinberg network (with periodic boundary conditions) as lists of adjacency matrix coordinates, where node positions are uniformly distributed in the real-valued interval [0,N]. You need to provide a list X of N iid random numbers drawn uniformly from [0,N]. Connection probability of two nodes u and v is ~ d(u,v)^(mu-1) where d(u,v) is the pair's distance in periodic boundary conditions. If you want to map from an ssmh, bear in mind that N=B^L and mu=log(xi)/log(B). DO NOT USE WITH `use_theory_algorithm = True`.)pydoc",
-            py::arg("N"),
-            py::arg("k"),
-            py::arg("mu"),
-            py::arg("X"),
-            py::arg("use_largest_component") = false,
-            py::arg("delete_non_largest_component_nodes") = true,
-            py::arg("use_theory_algorithm") = false,
-            py::arg("seed") = 0,
-            py::arg("epsilon") = 0.0
             );
 
     m.def("_twoD_random_geometric_kleinberg_network", &twoD_random_geometric_kleinberg_edge_list, 
