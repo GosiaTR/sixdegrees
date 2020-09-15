@@ -105,7 +105,7 @@ def twoD_random_geometric_kleinberg_network(
                                        seed=0,
                                        epsilon=1e-9,
                                        return_positions=False,
-                                       use_continuous_connection_probability=True,
+                                       use_continuous_connection_probability=False,
                                        X=None,
                                        Y=None,
                                        ):
@@ -431,7 +431,7 @@ def twoD_random_geometric_kleinberg_network_coord_lists(
                                        seed=0,
                                        epsilon=1e-9,
                                        return_positions=False,
-                                       use_continuous_connection_probability=True,
+                                       use_continuous_connection_probability=False,
                                        X = None,
                                        Y = None,
                                        ):
